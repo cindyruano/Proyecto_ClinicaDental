@@ -1,21 +1,417 @@
+/* Fondo General */
 ion-content {
-    // Imagen de fondo con una capa oscura para que resalte el texto
-    --background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                  url('../../assets/imagen/fondo.webp') no-repeat center center / cover;
+  --background: var(--ion-color-secondary);
+}
 
-    .container-bienvenida {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+// CUADRO PRESENTACIÓN
+.header-container {
+  background-color: var(--ion-color-outlined);
+  margin: 16px;
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
 
-        h1 {
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  margin-right: 12px;
+  border: 0px solid var(--ion-color-primary);
+}
+
+.user-info {
+  .welcome-text {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: 400;
+  }
+  .user-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--ion-color-inverted);
+  }
+}
+
+.business-title {
+  color: var(--ion-color-primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// CUADRO TU SALUD BUCAL
+.health-card {
+  background-color: var(--ion-color-outlined);
+  margin: 16px;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.health-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ion-color-inverted);
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+
+.motivation-text {
+  margin: 0 0 16px 0;
+  font-size: 1.05rem;
+  color: #666;
+  display: block;
+}
+
+.badge-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.percentage-badge {
+  background-color: #e2f3e4;
+  padding: 5px 70px 5px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: fit-content;
+}
+
+.percentage-number {
+  color: #008945;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.percentage-label {
+  color: #008945;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.emoji-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5px;
+}
+
+.status-emoji {
+  font-size: 4.8rem;
+  color: var(--ion-color-primary);
+}
+
+// CUADRO PRÓXIMA CITA
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 20px 10px 20px;
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ion-color-inverted);
+    margin: 0;
+  }
+}
+
+.appointment-card {
+  background: linear-gradient(135deg, #0d47a1 0%, #1e88e5 100%);
+  margin: 0 16px;
+  border-radius: 25px;
+  padding: 16px;
+  color: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+
+  .appointment-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .date-label {
+      margin: 0.5rem;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      opacity: 0.9;
     }
+    .time-label {
+      margin: 0.5rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .calendar-icon-bg {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      border-radius: 15px;
+      display: flex;
+      ion-icon { font-size: 2rem; }
+    }
+  }
+
+  .card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 10px 0;
+  }
+
+  .appointment-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .doctor-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      .doc-avatar {
+        width: 50px;
+        height: 50px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+      .doc-data {
+        h3 { margin: 0; font-size: 1rem; font-weight: 700; }
+        p { margin: 0; font-size: 0.75rem; opacity: 0.8; }
+      }
+    }
+    .details-btn {
+      --background: white;
+      --color: #0d47a1;
+      --border-radius: 10px;
+      --box-shadow: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      height: 38px;
+    }
+  }
+}
+
+// CUADRO DESCUENTOS
+.promo-container {
+  margin: 20px 16px;
+
+  .promo-card-btn {
+    --padding-start: 0;
+    --padding-end: 0;
+    width: 100%;
+    height: auto;
+    text-transform: none;
+  }
+}
+
+.promo-card {
+  background-color: var(--ion-color-outlined);
+  border-radius: 25px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.promo-content {
+  flex: 1;
+  padding-right: 10px;
+
+  .promo-badge {
+    background-color: #3b82f6;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .promo-title {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1d1d1d;
+    line-height: 1.2;
+  }
+  .promo-description {
+    margin: 10px 0 0 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+  }
+}
+
+.promo-image-wrapper {
+  .promo-image-bg {
+    background-color: #d1e9ff;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
+  }
+}
+
+/* Otros Elementos y Ajustes */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+  .dot {
+    width: 25px;
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    &.active { background-color: #1e88e5; }
+  }
+}
+
+.history-btn {
+  --color: var(--ion-color-primary);
+  font-weight: 600;
+  text-transform: none;
+  font-size: 0.9rem;
+}
+
+.avatar-button, .emoji-button, .calendar-btn {
+  --padding-start: 0;
+  --padding-end: 0;
+  height: auto;
+  margin: 0;
+}
+
+.emoji-button:active {
+  transform: scale(0.9);
+  transition: 0.2s;
+}
+
+/* Calendario Resaltado */
+.calendar-img-container {
+  background: rgba(255, 255, 255, 0.9); /* Más opaco para resaltar */
+  padding: 8px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  .calendar-img-main { width: 45px; height: 45px; }
+}
+
+/* Descuento y Hover con Bordes Redondeados */
+.promo-card {
+  transition: background 0.3s ease;
+  border-radius: 25px !important; /* Forzamos redondeado */
+
+  &:hover {
+    background: rgba(var(--ion-color-primary-rgb), 0.05);
+    border-radius: 25px; /* Evita que el fondo del hover sea cuadrado */
+  }
+}
+
+.promo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .arrow-btn {
+    --color: var(--ion-color-primary);
+    font-size: 1.5rem;
+    --padding-start: 0; --padding-end: 0;
+  }
+}
+
+/* Líneas de abajo dinámicas */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  .dot {
+    width: 20px; height: 4px;
+    background: #ccc; border-radius: 4px;
+    transition: 0.3s;
+    &.active { background: var(--ion-color-primary); width: 35px; }
+  }
+}
+
+/* Botones Transparentes Limpios */
+.emoji-button, .calendar-btn, .avatar-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --background-hover: transparent;
+  height: auto;
+  margin: 0;
+}
+
+/* Calendario Resaltado */
+.calendar-img-container {
+  background: white;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  .calendar-img-main { width: 40px; height: 40px; opacity: 1 !important; }
+}
+
+/* Tarjeta de Descuento con Tamaño Fijo */
+.promo-card-fixed {
+  background-color: var(--ion-color-outlined);
+  border-radius: 25px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 160px; /* Evita que el widget cambie de tamaño */
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(var(--ion-color-primary-rgb), 0.03);
+    border-radius: 25px; /* Bordes redondeados en hover */
+  }
+}
+
+.promo-img-box {
+  background-color: #d1e9ff;
+  border-radius: 20px;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0; /* Impide que la imagen se encoja */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Indicadores de Carrusel */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  .dot {
+    width: 20px; height: 5px;
+    background: #dcdcdc;
+    border-radius: 10px;
+    transition: 0.4s;
+    &.active { background: var(--ion-color-primary); width: 35px; }
+  }
 }

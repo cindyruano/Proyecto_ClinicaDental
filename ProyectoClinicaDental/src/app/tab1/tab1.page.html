@@ -1,13 +1,120 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" [style.--background]="'var(--ion-color-secondary)'">
 
-<ion-content [fullscreen]="true">
-  <div class="container-bienvenida">
-    <h1>Bienvenido</h1>
+
+  <div class="header-container">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4" class="user-section">
+          <ion-button fill="clear" class="avatar-button" (click)="goToProfile()">
+            <ion-avatar class="user-avatar">
+              <img src="assets/imagen/usuario.webp" alt="Perfil">
+            </ion-avatar>
+          </ion-button>
+          <div class="user-info">
+            <p class="welcome-text">Bienvenido</p>
+            <h2 class="user-name">{{ userName }}</h2>
+          </div>
+        </ion-col>
+
+        <ion-col size="4" class="ion-text-center">
+          <h1 class="business-title">CLINICA DENTAL</h1>
+        </ion-col>
+
+        <ion-col size="4" class="ion-text-end">
+          <ion-button fill="clear" (click)="toggleNotification()" [color]="notifActive ? 'primary' : 'inverted'">
+            <ion-icon slot="icon-only" name="notifications"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
+
+
+  <div class="health-card">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="8">
+        <h3 class="health-title">Tu Salud Bucal</h3>
+        <p class="motivation-text">¡Vas por excelente camino!</p>
+        <div class="badge-wrapper">
+          <div class="percentage-badge">
+            <span class="percentage-number">{{ saludPorcentaje }}%</span>
+            <span class="percentage-label">Salud Dental</span>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="ion-text-right">
+        <ion-button fill="clear" (click)="openHealthDetails()" class="emoji-button">
+          <ion-icon name="happy" class="status-emoji"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+  <div class="section-header">
+    <h2 class="section-title">Próxima Cita</h2>
+    <ion-button fill="clear" (click)="viewHistory()" class="history-btn">Ver historial</ion-button>
+  </div>
+
+  <div class="appointment-card">
+    <div class="appointment-top">
+      <div class="date-content">
+        <p class="date-label">{{ proximaCita.fecha }}</p>
+        <h2 class="time-label">{{ proximaCita.hora }}</h2>
+      </div>
+
+      <ion-button fill="clear" (click)="goToTabs2()" class="calendar-btn">
+        <div class="calendar-img-container">
+          <img src="assets/imagen/calendario.jpg" class="calendar-img-main">
+        </div>
+      </ion-button>
+    </div>
+
+    <div class="card-divider"></div>
+
+    <div class="appointment-bottom">
+      <div class="doctor-profile">
+        <ion-avatar class="doc-avatar">
+          <img src="assets/imagen/doctor.webp" alt="Doctor">
+        </ion-avatar>
+        <div class="doc-data">
+          <h3>{{ proximaCita.doctor }}</h3>
+          <p>{{ proximaCita.especialidad }}</p>
+        </div>
+      </div>
+      <ion-button class="details-btn" (click)="viewAppointmentDetails()">Detalles</ion-button>
+    </div>
+  </div>
+
+
+  <div class="promo-container">
+    <div class="promo-wrapper">
+      <ion-button fill="clear" class="arrow-btn" (click)="prevPromo()" [disabled]="indiceActual === 0">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+
+      <div class="promo-card-fixed">
+        <div class="promo-content">
+          <span class="promo-badge">OFERTA DEL MES</span>
+          <h2 class="promo-title">{{ promociones[indiceActual].title }}</h2>
+          <p class="promo-description">{{ promociones[indiceActual].desc }}</p>
+        </div>
+        <div class="promo-img-box">
+          <img src="assets/imagen/descuento.webp" alt="Promo">
+        </div>
+      </div>
+
+      <ion-button fill="clear" class="arrow-btn" (click)="prevPromo()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="arrow-btn" (click)="nextPromo()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="carousel-dots">
+      <div *ngFor="let p of promociones; let i = index" class="dot" [class.active]="i === indiceActual"></div>
+    </div>
+  </div>
+
 </ion-content>

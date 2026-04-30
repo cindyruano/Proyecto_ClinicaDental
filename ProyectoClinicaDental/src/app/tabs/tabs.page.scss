@@ -1,1 +1,13 @@
+ion-tab-bar {
+  --background: transparent; // Fondo invisible
+  position: absolute;        // Flota sobre la página
+  bottom: 0;
+  width: 100%;
+  border: none;              // Quita la línea gris superior
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); // Sombra para ver los iconos
+}
 
+ion-tab-button {
+  --color: white;            // Iconos blancos por defecto
+  --color-selected: #4db8ff; // Azul dental cuando se pulsa
+}

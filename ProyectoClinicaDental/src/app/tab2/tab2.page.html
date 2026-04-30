@@ -1,17 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" [style.--background]="'var(--ion-color-secondary)'">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="header-container">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="9" class="brand-section">
+          <ion-button fill="clear" class="avatar-button" (click)="goToProfile()">
+            <ion-avatar class="user-avatar">
+              <img src="assets/imagen/usuario.webp" alt="Perfil">
+            </ion-avatar>
+          </ion-button>
+          <h1 class="clinic-name">CLINICA DENTAL</h1>
+        </ion-col>
+        <ion-col size="3" class="ion-text-end">
+          <ion-button fill="clear" (click)="toggleNotification()">
+            <ion-icon slot="icon-only" name="notifications" color="primary"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+  <div class="main-title-container">
+    <h2 class="section-main-title">Agendar Cita</h2>
+    <p class="section-subtitle">Selecciona el tratamiento y el horario que mejor te convenga.</p>
+  </div>
+
+  <div class="treatment-section">
+    <p class="label-title">TRATAMIENTO</p>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="6">
+          <div class="treatment-box"
+               [class.selected]="tratamientoSeleccionado === 'ortodoncia'"
+               (click)="seleccionar('ortodoncia')">
+            <div class="icon-wrapper blue-light">
+              <img src="assets/icon/favicon.png" class="inner-icon" style="filter: hue-rotate(180deg);">
+            </div>
+            <h3>Ortodoncia</h3>
+            <p>60 min</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="6">
+          <div class="treatment-box"
+               [class.selected]="tratamientoSeleccionado === 'limpieza'"
+               (click)="seleccionar('limpieza')">
+            <div class="icon-wrapper grey-light">
+              <ion-icon name="sparkles" class="inner-icon-ion"></ion-icon>
+            </div>
+            <h3>Limpieza</h3>
+            <p>45 min</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
 </ion-content>
