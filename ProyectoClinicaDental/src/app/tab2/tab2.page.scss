@@ -1,26 +1,31 @@
-/* Fondo e Header */
+//FONDO GENERAL
 ion-content {
   --background: var(--ion-color-secondary);
 }
 
 .header-container {
   background-color: var(--ion-color-outlined);
-  margin: 16px;
-  padding: 5px 15px;
-  border-radius: 15px;
+  margin: 12px;
+  border-radius: 20px;
+  padding: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
+  .user-section {
+  display: flex;
+  align-items: center;
+}
+
 .user-avatar {
-  width: 45px;
-  height: 45px;
-  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
   border: 0px solid var(--ion-color-primary);
 }
 
   .brand-section {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 5px;
   }
 
   .clinic-name {
@@ -34,12 +39,12 @@ ion-content {
 }
 
 
-/* Texto de Agendar */
+// AGENDAR CITAS
 .main-title-container {
-  padding: 10px 25px 0px 25px; // Reducido padding inferior para acercar contenido
+  padding: 10px 25px 0px 25px;
 
   .section-main-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: #121212;
     margin: 0;
@@ -47,27 +52,27 @@ ion-content {
 
   .section-subtitle {
     color: #666;
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     margin: 8px 0;
   }
 }
 
-/* Módulo de Tratamiento (Ajustado para cercanía y alineación) */
+// CUADROS TRATAMIENTOS
 .treatment-section {
-  padding: 0px 17px; // Alineado lateralmente con los botones internos
-  margin-top: 10px; // Sube la sección completa
+  padding: 0px 17px;
+  margin-top: 10px;
 
   .section-header-inline {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 8px; // Alinea el texto exactamente con el borde de los cuadros
-    margin-bottom: 5px; // Espacio mínimo con los botones
+    padding: 0 8px;
+    margin-bottom: 5px;
   }
 
   .section-title-small {
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 18px;
     color: #444;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -85,16 +90,14 @@ ion-content {
   }
 }
 
-/* Contenedor de Botones (Flex para asegurar que Ortodoncia y Limpieza estén alineados) */
 .treatment-buttons-container {
   display: flex;
   justify-content: center;
   align-items: stretch;
 }
 
-/* Cuadros Botones */
 .treatment-box {
-  flex: 1; // Hace que ambos midan lo mismo y estén alineados
+  flex: 1;
   background: white;
   border-radius: 18px;
   margin: 8px;
@@ -147,7 +150,7 @@ ion-content {
 .avatar-button {
   --padding-start: 0;
   --padding-end: 0;
-  --background: transparent; // Eliminado fondo
+  --background: transparent;
   --background-hover: transparent;
   height: auto;
   margin: 0;
@@ -155,11 +158,11 @@ ion-content {
   .user-avatar {
     width: 45px;
     height: 45px;
-    border: none; // Eliminado el borde azul
+    border: none;
 
     img {
       object-fit: cover;
-      border-radius: 50%; // Asegura que sea circular
+      border-radius: 50%;
     }
   }
 }

@@ -15,11 +15,9 @@ import { notifications, sparkles } from 'ionicons/icons';
 })
 export class Tab2Page {
   notifActive: boolean = false;
-  // Variable para saber cuál cuadro tiene el marco azul
   tratamientoSeleccionado: string = 'ortodoncia';
 
   constructor() {
-    // Registramos los iconos (usaremos sparkles para limpieza y una imagen para el diente)
     addIcons({ notifications, sparkles });
   }
 
