@@ -20,23 +20,25 @@
     </ion-grid>
   </div>
 
-
   <div class="main-title-container">
     <h2 class="section-main-title">Agendar Cita</h2>
     <p class="section-subtitle">Selecciona el tratamiento y el horario que mejor te convenga.</p>
   </div>
 
   <div class="treatment-section">
-    <p class="label-title">TRATAMIENTO</p>
+    <div class="section-header-inline">
+      <h2 class="section-title-small">Tratamiento</h2>
+      <ion-button fill="clear" (click)="viewMoreTreatments()" class="view-more-btn">
+        Ver más
+      </ion-button>
+    </div>
 
     <ion-grid class="ion-no-padding">
       <ion-row>
         <ion-col size="6">
-          <div class="treatment-box"
-               [class.selected]="tratamientoSeleccionado === 'ortodoncia'"
-               (click)="seleccionar('ortodoncia')">
+          <div class="treatment-box" [class.selected]="tratamientoSeleccionado === 'ortodoncia'" (click)="seleccionar('ortodoncia')">
             <div class="icon-wrapper blue-light">
-              <img src="assets/icon/favicon.png" class="inner-icon" style="filter: hue-rotate(180deg);">
+              <img src="assets/imagen/ortodoncia.webp" class="inner-icon">
             </div>
             <h3>Ortodoncia</h3>
             <p>60 min</p>
@@ -44,11 +46,9 @@
         </ion-col>
 
         <ion-col size="6">
-          <div class="treatment-box"
-               [class.selected]="tratamientoSeleccionado === 'limpieza'"
-               (click)="seleccionar('limpieza')">
+          <div class="treatment-box" [class.selected]="tratamientoSeleccionado === 'limpieza'" (click)="seleccionar('limpieza')">
             <div class="icon-wrapper grey-light">
-              <ion-icon name="sparkles" class="inner-icon-ion"></ion-icon>
+              <img src="assets/imagen/simbolo.webp" class="inner-icon">
             </div>
             <h3>Limpieza</h3>
             <p>45 min</p>

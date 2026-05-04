@@ -1,14 +1,21 @@
 /* Fondo e Header */
 ion-content {
-  --background: #f8fbff; /* Fondo general suave */
+  --background: var(--ion-color-secondary);
 }
 
 .header-container {
-  background: white;
+  background-color: var(--ion-color-outlined);
   margin: 16px;
   padding: 5px 15px;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  margin-right: 12px;
+  border: 0px solid var(--ion-color-primary);
+}
 
   .brand-section {
     display: flex;
@@ -16,28 +23,28 @@ ion-content {
     gap: 12px;
   }
 
-  .clinic-avatar {
-    width: 35px;
-    height: 35px;
-  }
-
   .clinic-name {
-    font-size: 1.2rem;
-    font-weight: 800;
+    font-size: 1.1rem;
+    font-weight: 550;
     color: #2b6de5;
-    margin: 0;
+    margin: 0.5px;
+    text-transform: uppercase;
+    letter-spacing: 0px;
   }
 }
 
+
 /* Texto de Agendar */
 .main-title-container {
-  padding: 10px 25px;
+  padding: 10px 25px 0px 25px; // Reducido padding inferior para acercar contenido
+
   .section-main-title {
     font-size: 1.8rem;
     font-weight: 800;
     color: #121212;
     margin: 0;
   }
+
   .section-subtitle {
     color: #666;
     font-size: 0.95rem;
@@ -45,25 +52,54 @@ ion-content {
   }
 }
 
-/* Módulo de Tratamiento */
+/* Módulo de Tratamiento (Ajustado para cercanía y alineación) */
 .treatment-section {
-  padding: 15px 20px;
-  .label-title {
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: #444;
-    letter-spacing: 0.5px;
-    margin-bottom: 15px;
+  padding: 0px 17px; // Alineado lateralmente con los botones internos
+  margin-top: 10px; // Sube la sección completa
+
+  .section-header-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px; // Alinea el texto exactamente con el borde de los cuadros
+    margin-bottom: 5px; // Espacio mínimo con los botones
   }
+
+  .section-title-small {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  .view-more-btn {
+    --color: var(--ion-color-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    --padding-end: 0;
+    text-transform: none;
+    height: auto;
+    margin: 0;
+  }
+}
+
+/* Contenedor de Botones (Flex para asegurar que Ortodoncia y Limpieza estén alineados) */
+.treatment-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
 /* Cuadros Botones */
 .treatment-box {
+  flex: 1; // Hace que ambos midan lo mismo y estén alineados
   background: white;
   border-radius: 18px;
   margin: 8px;
   padding: 20px 15px;
-  border: 2px solid transparent; // Marco invisible por defecto
+  border: 2px solid transparent;
   transition: all 0.3s ease;
   cursor: pointer;
 
@@ -79,7 +115,7 @@ ion-content {
     &.blue-light { background: #eef4ff; }
     &.grey-light { background: #f4f4f4; }
 
-    .inner-icon { width: 28px; }
+    .inner-icon { width: 60px; }
     .inner-icon-ion { font-size: 24px; color: #555; }
   }
 
@@ -96,9 +132,8 @@ ion-content {
     color: #888;
   }
 
-  /* ESTADO SELECCIONADO (MARCO AZUL) */
   &.selected {
-    border-color: #2b6de5; // El marco azul que pediste
+    border-color: #2b6de5;
     background: #ffffff;
     box-shadow: 0 4px 15px rgba(43, 109, 229, 0.1);
   }
@@ -108,21 +143,23 @@ ion-content {
   }
 }
 
-/* Estilo para el contenedor del avatar */
+/* Avatar del Usuario (Sin fondo azul ni bordes) */
 .avatar-button {
   --padding-start: 0;
   --padding-end: 0;
-  --background-hover: transparent; // Quita el fondo gris al pasar el mouse
+  --background: transparent; // Eliminado fondo
+  --background-hover: transparent;
   height: auto;
   margin: 0;
 
   .user-avatar {
-    width: 45px;  // Tamaño ajustable
+    width: 45px;
     height: 45px;
-    border: 2px solid var(--ion-color-primary); // Un borde para que resalte
+    border: none; // Eliminado el borde azul
 
     img {
-      object-fit: cover; // Evita que la foto se estire
+      object-fit: cover;
+      border-radius: 50%; // Asegura que sea circular
     }
   }
 }

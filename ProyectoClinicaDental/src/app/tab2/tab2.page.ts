@@ -34,4 +34,8 @@ export class Tab2Page {
   goToProfile() {
   console.log('Navegando al perfil del usuario...');
   }
+
+  viewMoreTreatments() {
+  console.log('Mostrando catálogo completo de tratamientos...');
+  }
 }

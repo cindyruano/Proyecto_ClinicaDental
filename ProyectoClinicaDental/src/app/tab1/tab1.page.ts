@@ -15,7 +15,7 @@ import { notifications, happy, chevronForwardOutline, chevronBackOutline, calend
   ],
 })
 export class Tab1Page {
-  userName: string = 'Cindy Ruano';
+  userName: string = 'Cindy';
   saludPorcentaje: number = 90;
   notifActive: boolean = false;
   indiceActual: number = 0;
@@ -28,7 +28,7 @@ export class Tab1Page {
   };
 
   promociones = [
-    { title: '30% Descuento en Blanqueamiento', desc: 'Recupera el brillo de tu sonrisa con nuestra última tecnología.' },
+    { title: '30% Descuento Limpieza', desc: 'Recupera el brillo de tu sonrisa con nuestra última tecnología.' },
     { title: 'Limpieza Dental 2x1', desc: 'Aprovecha esta promoción por tiempo limitado.' }
   ];
 
@@ -51,6 +51,10 @@ export class Tab1Page {
   openHealthDetails() { console.log('Salud'); }
   viewHistory() { console.log('Historial'); }
   viewAppointmentDetails() { console.log('Detalles Cita'); }
+
+  verDetallePromo() {
+    console.log('Detalle de la promoción:', this.promociones[this.indiceActual].title);
+  }
 
   // Ir a la siguiente promoción (o volver al inicio si es la última)
 nextPromo() {
