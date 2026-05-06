@@ -1,13 +1,57 @@
-ion-tab-bar {
-  --background: transparent; // Fondo invisible
-  position: absolute;        // Flota sobre la página
+// Contenedor principal estilizado con bordes redondeados y sombra
+.custom-tab-container {
+  position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
-  border: none;              // Quita la línea gris superior
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); // Sombra para ver los iconos
+  height: 65px;
+  background-color: white;
+  z-index: 1000; // Aseguramos que esté por encima de todo
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // MAGIA DEL SCROLL: Transición fluida para ocultar/mostrar
+  transition: transform 0.3s ease-in-out;
+
+  // Por defecto, la barra está visible (su posición original)
+  transform: translateY(0);
+
+  // CLASE QUE OCULTA LA BARRA: Mueve la barra hacia arriba
+  // Esta clase se añade vía Javascript cuando el usuario sube
+  &.tab-bar-hidden {
+    transform: translateY(-70px); // Se mueve hacia arriba, fuera de la vista
+  }
 }
 
-ion-tab-button {
-  --color: white;            // Iconos blancos por defecto
-  --color-selected: #4db8ff; // Azul dental cuando se pulsa
+// La barra de tabs real (los botones)
+.custom-tab-bar {
+  width: 100%;
+  background: transparent !important;
+  border: none !important;
+  --box-shadow: none;
+  height: 55px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  ion-tab-button {
+    --background: transparent !important;
+    --color: #8fa0ac;
+    --color-selected: var(--ion-color-primary);
+
+    ion-icon {
+      font-size: 1.5rem;
+      margin-bottom: 2px;
+    }
+
+    ion-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1px;
+    }
+  }
 }

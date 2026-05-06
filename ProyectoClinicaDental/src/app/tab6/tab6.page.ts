@@ -5,15 +5,15 @@ import { addIcons } from 'ionicons';
 import { notifications, sparkles } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss'],
+  selector: 'app-tab6',
+  templateUrl: 'tab6.page.html',
+  styleUrls: ['tab6.page.scss'],
   standalone: true,
   imports: [
     CommonModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton
   ],
 })
-export class Tab3Page {
+export class Tab6Page {
   notifActive: boolean = false;
 
   constructor() {

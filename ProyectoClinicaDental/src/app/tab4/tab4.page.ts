@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { CommonModule } from '@angular/common';
+import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { notifications, sparkles } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
   styleUrls: ['tab4.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent],
+  standalone: true,
+  imports: [
+    CommonModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton
+  ],
 })
 export class Tab4Page {
-  constructor() {}
+  notifActive: boolean = false;
+
+  constructor() {
+    addIcons({ notifications, sparkles });
+  }
+
+  toggleNotification() {
+    this.notifActive = !this.notifActive;
+  }
+
+  goToProfile() {
+  console.log('Navegando al perfil del usuario...');
+  }
 }

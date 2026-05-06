@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // Importar el Router
+import { Router } from '@angular/router';
 import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { notifications, happy, chevronForwardOutline, chevronBackOutline, calendarClear } from 'ionicons/icons';
+import { notifications, happy, chevronForwardOutline, chevronBackOutline, calendarClear, add, chatbubbleEllipses, headset } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton
-  ],
+  imports: [ CommonModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton ],
 })
 export class Tab1Page {
   userName: string = 'Cindy';
@@ -28,49 +26,68 @@ export class Tab1Page {
   };
 
   promociones = [
-    { title: '30% Descuento Limpieza', desc: 'Recupera el brillo de tu sonrisa con nuestra última tecnología.' },
+    { title: '30% Limpieza', desc: 'Recupera el brillo de tu sonrisa con nuestra última tecnología.' },
     { title: 'Limpieza Dental 2x1', desc: 'Aprovecha esta promoción por tiempo limitado.' }
   ];
 
-  // Inyectar el Router en el constructor
   constructor(private router: Router) {
-    addIcons({
-      notifications, happy, calendarClear,
-      chevronForwardOutline, chevronBackOutline
-    });
+    addIcons({ notifications, happy, calendarClear, chevronForwardOutline, chevronBackOutline, add, chatbubbleEllipses, headset });
   }
 
-  // Función para navegar a la pestaña de Citas (Tab2)
+  // Corregido: El botón del calendario ahora también apunta al Historial de Citas (Tab 5)
+  goToHistorialCitas() {
+    this.router.navigate(['/tabs/tab5']);
+  }
+
+  // Mantiene la navegación por defecto del botón inferior si lo necesitas
   goToTabs2() {
     this.router.navigate(['/tabs/tab2']);
   }
 
-  // Resto de funciones para evitar errores
+  agendarCita() {
+    console.log('Navegando a agendar cita...');
+    this.router.navigate(['/tabs/tab2']);
+  }
+
+  chatIA() {
+    console.log('Abriendo chat con IA...');
+  }
+
+  soporteTecnico() {
+    console.log('Abriendo soporte técnico...');
+  }
+
+  viewProfile() {
+    this.router.navigate(['/tabs/tab6']);
+  }
+
   toggleNotification() { this.notifActive = !this.notifActive; }
-  goToProfile() { console.log('Perfil'); }
   openHealthDetails() { console.log('Salud'); }
-  viewHistory() { console.log('Historial'); }
+
+  // Corregido: El enlace de texto "Ver historial" apunta al Historial de Citas (Tab 5)
+  viewHistory() {
+    this.router.navigate(['/tabs/tab5']);
+  }
+
   viewAppointmentDetails() { console.log('Detalles Cita'); }
 
   verDetallePromo() {
     console.log('Detalle de la promoción:', this.promociones[this.indiceActual].title);
   }
 
-  // Ir a la siguiente promoción (o volver al inicio si es la última)
-nextPromo() {
-  if (this.indiceActual < this.promociones.length - 1) {
-    this.indiceActual++;
-  } else {
-    this.indiceActual = 0; // Vuelve al primero
+  nextPromo() {
+    if (this.indiceActual < this.promociones.length - 1) {
+      this.indiceActual++;
+    } else {
+      this.indiceActual = 0;
+    }
   }
-}
 
-// Ir a la anterior (o ir al final si es la primera)
-prevPromo() {
-  if (this.indiceActual > 0) {
-    this.indiceActual--;
-  } else {
-    this.indiceActual = this.promociones.length - 1; // Va al último
+  prevPromo() {
+    if (this.indiceActual > 0) {
+      this.indiceActual--;
+    } else {
+      this.indiceActual = this.promociones.length - 1;
+    }
   }
-}
 }

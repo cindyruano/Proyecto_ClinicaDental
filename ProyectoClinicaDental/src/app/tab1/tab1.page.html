@@ -4,7 +4,7 @@
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-align-items-center">
         <ion-col size="4" class="user-section">
-          <ion-button fill="clear" class="avatar-button" (click)="goToProfile()">
+          <ion-button fill="clear" (click)="viewProfile()" class="avatar-button">
             <ion-avatar class="user-avatar">
               <img src="assets/imagen/usuario.webp" alt="Perfil">
             </ion-avatar>
@@ -15,7 +15,7 @@
           </div>
         </ion-col>
         <ion-col size="4" class="ion-text-center">
-          <h1 class="business-title">CLINICA DENTAL</h1>
+          <h1 class="business-title">Clinic Dental</h1>
         </ion-col>
 
         <ion-col size="4" class="ion-text-end">
@@ -26,7 +26,6 @@
       </ion-row>
     </ion-grid>
   </div>
-
 
   <div class="health-card">
     <ion-row class="ion-align-items-center">
@@ -48,20 +47,20 @@
     </ion-row>
   </div>
 
-
   <div class="section-header">
     <h2 class="section-title">Próxima Cita</h2>
     <ion-button fill="clear" (click)="viewHistory()" class="history-btn">Ver historial</ion-button>
   </div>
+
   <div class="appointment-card">
     <div class="appointment-top">
       <div class="date-content">
         <p class="date-label">{{ proximaCita.fecha }}</p>
         <h2 class="time-label">{{ proximaCita.hora }}</h2>
       </div>
-      <ion-button fill="clear" (click)="goToTabs2()" class="calendar-btn">
+      <ion-button fill="clear" (click)="goToHistorialCitas()" class="calendar-btn">
         <div class="calendar-img-container">
-          <img src="assets/imagen/calendario.webp" class="calendar-img-main">
+          <img src="assets/imagen/calendario.webp" class="calendar-img-main" alt="Calendario">
         </div>
       </ion-button>
     </div>
@@ -80,6 +79,40 @@
     </div>
   </div>
 
+  <div class="quick-actions-container">
+    <h2 class="quick-actions-title">Atención Rápida</h2>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="4" class="ion-text-center action-col">
+          <ion-button fill="clear" class="circle-btn" (click)="agendarCita()">
+            <div class="icon-circle bg-blue">
+              <ion-icon name="add"></ion-icon>
+            </div>
+          </ion-button>
+          <span class="action-label">Agendar Cita</span>
+        </ion-col>
+
+        <ion-col size="4" class="ion-text-center action-col">
+          <ion-button fill="clear" class="circle-btn" (click)="chatIA()">
+            <div class="icon-circle bg-green">
+              <ion-icon name="chatbubble-ellipses"></ion-icon>
+            </div>
+          </ion-button>
+          <span class="action-label">Chat con IA</span>
+        </ion-col>
+
+        <ion-col size="4" class="ion-text-center action-col">
+          <ion-button fill="clear" class="circle-btn" (click)="soporteTecnico()">
+            <div class="icon-circle bg-gray">
+              <ion-icon name="headset"></ion-icon>
+            </div>
+          </ion-button>
+          <span class="action-label">Soporte</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
   <div class="promo-container">
     <div class="promo-wrapper">

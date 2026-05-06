@@ -1,8 +1,22 @@
-<ion-content [fullscreen]="true">
-  <div class="main-container">
-    <div class="overlay">
-      <p class="greeting">¡Hola, Bienvenida!</p>
-      <h1 class="main-title">HOLI</h1>
-    </div>
+<ion-content [fullscreen]="true" [style.--background]="'var(--ion-color-secondary)'">
+
+  <div class="header-container">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="9" class="brand-section">
+          <ion-button fill="clear" class="avatar-button" (click)="goToProfile()">
+            <ion-avatar class="user-avatar">
+              <img src="assets/imagen/usuario.webp" alt="Perfil">
+            </ion-avatar>
+          </ion-button>
+          <h1 class="clinic-name">CLINICA DENTAL</h1>
+        </ion-col>
+        <ion-col size="3" class="ion-text-end">
+          <ion-button fill="clear" (click)="toggleNotification()">
+            <ion-icon slot="icon-only" name="notifications" color="primary"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
