@@ -17,7 +17,6 @@
         <ion-col size="4" class="ion-text-center">
           <h1 class="business-title">Clinic Dental</h1>
         </ion-col>
-
         <ion-col size="4" class="ion-text-end">
           <ion-button fill="clear" (click)="toggleNotification()" [color]="notifActive ? 'primary' : 'inverted'">
             <ion-icon slot="icon-only" name="notifications"></ion-icon>
@@ -81,7 +80,6 @@
 
   <div class="quick-actions-container">
     <h2 class="quick-actions-title">Atención Rápida</h2>
-
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-justify-content-center">
         <ion-col size="4" class="ion-text-center action-col">
@@ -92,7 +90,6 @@
           </ion-button>
           <span class="action-label">Agendar Cita</span>
         </ion-col>
-
         <ion-col size="4" class="ion-text-center action-col">
           <ion-button fill="clear" class="circle-btn" (click)="chatIA()">
             <div class="icon-circle bg-green">
@@ -101,7 +98,6 @@
           </ion-button>
           <span class="action-label">Chat con IA</span>
         </ion-col>
-
         <ion-col size="4" class="ion-text-center action-col">
           <ion-button fill="clear" class="circle-btn" (click)="soporteTecnico()">
             <div class="icon-circle bg-gray">
@@ -137,4 +133,5 @@
       <div *ngFor="let p of promociones; let i = index" class="dot" [class.active]="i === indiceActual"></div>
     </div>
   </div>
+
 </ion-content>

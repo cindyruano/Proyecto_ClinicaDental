@@ -1,41 +1,60 @@
-//FONDO GENERAL
+// FONDO GENERAL
 ion-content {
   --background: var(--ion-color-secondary);
 }
 
+// CUADRO PRESENTACIÓN
 .header-container {
   background-color: var(--ion-color-outlined);
   margin: 12px;
   border-radius: 20px;
-  padding: 10px;
+  padding: 6px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
   .user-section {
-  display: flex;
-  align-items: center;
-}
+    display: flex;
+    align-items: center;
+  }
 
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  border: 0px solid var(--ion-color-primary);
-}
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    border: 0px solid var(--ion-color-primary);
+  }
 
   .brand-section {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 3px;
   }
 
   .clinic-name {
-    font-size: 1.1rem;
-    font-weight: 550;
+    font-size: 1.2rem;
+    font-weight: 800;
     color: #2b6de5;
     margin: 0.5px;
-    text-transform: uppercase;
     letter-spacing: 0px;
   }
+}
+
+// ELEMENTOS COMUNES Y COMPONENTES BASE
+.avatar-button, .emoji-button, .calendar-btn {
+  --padding-start: 0;
+  --padding-end: 0;
+  height: auto;
+  margin: 0;
+}
+
+.emoji-button:active {
+  transform: scale(0.9);
+  transition: 0.2s;
+}
+
+.hidden-picker {
+  display: none;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
 }
 
 // AGENDAR CITAS
@@ -43,15 +62,15 @@ ion-content {
   padding: 10px 25px 0px 25px;
 
   .section-main-title {
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: #121212;
     margin: 0;
   }
 
   .section-subtitle {
     color: #666;
-    font-size: 0.94rem;
+    font-size: 0.86rem;
     margin: 8px 0;
   }
 }
@@ -59,22 +78,21 @@ ion-content {
 // CUADROS TRATAMIENTOS
 .treatment-section {
   padding: 0px 17px;
-  margin-top: 10px;
+  margin-top: 8px;
 
   .section-header-inline {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 8px;
-    margin-bottom: 5px;
+    margin-bottom: -10px;
   }
 
   .section-title-small {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #444;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     margin: 0;
   }
 
@@ -100,7 +118,8 @@ ion-content {
   background: white;
   border-radius: 18px;
   margin: 8px;
-  padding: 20px 15px;
+  margin-top: 7px;
+  padding: 19px 15px;
   border: 2px solid transparent;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -145,23 +164,230 @@ ion-content {
   }
 }
 
-/* Avatar del Usuario (Sin fondo azul ni bordes) */
-.avatar-button {
-  --padding-start: 0;
-  --padding-end: 0;
-  --background: transparent;
-  --background-hover: transparent;
-  height: auto;
-  margin: 0;
+// CONTENEDOR DEL CALENDARIO
+.calendar-container {
+  padding: 0px 17px;
+  margin-top: 2px;
 
-  .user-avatar {
-    width: 45px;
-    height: 45px;
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    margin-bottom: 0px;
+
+    .month-year-picker-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #3e4b5b;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      padding: 0;
+      text-transform: uppercase;
+
+      &:active {
+        opacity: 0.6;
+      }
+    }
+
+    .nav-arrows {
+      display: flex;
+      gap: 5px;
+
+      ion-button {
+        --color: #3e4b5b;
+        height: 32px;
+        width: 32px;
+        margin: 0;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+// TARJETA BLANCA DEL CALENDARIO
+.calendar-card {
+  background: white;
+  border-radius: 20px;
+  padding: 18px 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+
+  // Letras
+  .weeks-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 10px;
+
+    .week-day {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #8e9aa7;
+    }
+  }
+
+  // Números
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 8px;
+    text-align: center;
+  }
+
+  .day-number {
+    background: transparent;
     border: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1c2430;
+    height: 38px;
+    width: 38px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
 
-    img {
-      object-fit: cover;
-      border-radius: 50%;
+    // Días del mes anterior
+    &.prev-month {
+      color: #e1e5eb;
+      pointer-events: none;
+    }
+
+    // Círculo de Selección
+    &.selected {
+      background: var(--ion-color-primary);
+      color: #ffffff !important;
+      box-shadow: 0 4px 10px rgba(43, 109, 229, 0.3);
+    }
+
+    &:active:not(.prev-month) {
+      transform: scale(0.9);
+    }
+  }
+}
+
+// SECCIÓN HORARIOS DISPONIBLES Y CONFIRMACIÓN
+.slots-section {
+  padding: 0px 17px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+
+  .section-title-slots {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #5c6a79;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    padding: 0 8px;
+  }
+}
+
+.slots-container {
+  padding: 0 4px;
+
+  .slots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+
+  // Estilo base de los botones de horario (Cápsulas)
+  .slot-btn {
+    background: white;
+    color: #1c2430;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 20px;
+    border: 1.5px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+
+    &.selected {
+      background: var(--ion-color-primary);
+      color: white;
+      border-color: var(--ion-color-primary);
+    }
+
+    &.disabled {
+      background: #e9ecef;
+      color: #a3aab2;
+      border-color: transparent;
+      cursor: not-allowed;
+    }
+
+    &:active:not(.disabled) {
+      transform: scale(0.95);
+    }
+  }
+
+  // Alerta cuando no hay turnos
+  .no-slots-alert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 16px;
+    color: #718096;
+
+    ion-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  }
+}
+
+// BOTONES DE ACCIÓN (INFERIORES)
+.actions-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  // 3. Botón Agregar a Calendarios
+  .calendar-sync-btn {
+    --color: #0c63bc;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-transform: none;
+    background: #edf4fc;
+    border-radius: 14px;
+    height: 48px;
+    margin: 0;
+
+    ion-icon {
+      font-size: 1.3rem;
+    }
+  }
+
+  // 4. Botón Confirmar Cita Verde
+  .confirm-appointment-btn {
+    --background: #006b38;
+    --color: white;
+    --border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    height: 54px;
+    margin: 0;
+    text-transform: none;
+    box-shadow: 0 4px 12px rgba(0, 107, 56, 0.2);
+
+    ion-icon {
+      font-size: 1.4rem;
     }
   }
 }

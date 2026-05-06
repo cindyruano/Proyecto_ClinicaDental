@@ -34,12 +34,10 @@ export class Tab1Page {
     addIcons({ notifications, happy, calendarClear, chevronForwardOutline, chevronBackOutline, add, chatbubbleEllipses, headset });
   }
 
-  // Corregido: El botón del calendario ahora también apunta al Historial de Citas (Tab 5)
   goToHistorialCitas() {
     this.router.navigate(['/tabs/tab5']);
   }
 
-  // Mantiene la navegación por defecto del botón inferior si lo necesitas
   goToTabs2() {
     this.router.navigate(['/tabs/tab2']);
   }
@@ -61,33 +59,31 @@ export class Tab1Page {
     this.router.navigate(['/tabs/tab6']);
   }
 
-  toggleNotification() { this.notifActive = !this.notifActive; }
-  openHealthDetails() { console.log('Salud'); }
+  toggleNotification() {
+    this.notifActive = !this.notifActive;
+  }
 
-  // Corregido: El enlace de texto "Ver historial" apunta al Historial de Citas (Tab 5)
+  openHealthDetails() {
+    console.log('Salud');
+  }
+
   viewHistory() {
     this.router.navigate(['/tabs/tab5']);
   }
 
-  viewAppointmentDetails() { console.log('Detalles Cita'); }
+  viewAppointmentDetails() {
+    console.log('Detalles Cita');
+  }
 
   verDetallePromo() {
     console.log('Detalle de la promoción:', this.promociones[this.indiceActual].title);
   }
 
   nextPromo() {
-    if (this.indiceActual < this.promociones.length - 1) {
-      this.indiceActual++;
-    } else {
-      this.indiceActual = 0;
-    }
+    this.indiceActual = (this.indiceActual < this.promociones.length - 1) ? this.indiceActual + 1 : 0;
   }
 
   prevPromo() {
-    if (this.indiceActual > 0) {
-      this.indiceActual--;
-    } else {
-      this.indiceActual = this.promociones.length - 1;
-    }
+    this.indiceActual = (this.indiceActual > 0) ? this.indiceActual - 1 : this.promociones.length - 1;
   }
 }

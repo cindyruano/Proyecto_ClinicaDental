@@ -11,7 +11,7 @@ export const routes: Routes = [
         loadComponent: () => import('./tab1/tab1.page').then(m => m.Tab1Page)
       },
       {
-        path: 'tab2', // Citas (El botón central del barco)
+        path: 'tab2', // Citas
         loadComponent: () => import('./tab2/tab2.page').then(m => m.Tab2Page)
       },
       {
@@ -23,7 +23,7 @@ export const routes: Routes = [
         loadComponent: () => import('./tab4/tab4.page').then(m => m.Tab4Page)
       },
       {
-        path: 'tab5', // Historial de Citas (Registrado internamente)
+        path: 'tab5', // Historial de Citas
         loadComponent: () => import('./tab5/tab5.page').then(m => m.Tab5Page)
       },
       {

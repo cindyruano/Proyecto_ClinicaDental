@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { notifications, sparkles } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tab7',
-  templateUrl: './tab7.page.html',
-  styleUrls: ['./tab7.page.scss'],
+  selector: 'app-tab4',
+  templateUrl: 'tab4.page.html',
+  styleUrls: ['tab4.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [
+    CommonModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton
+  ],
 })
-export class Tab7Page implements OnInit {
+export class Tab4Page {
+  notifActive: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    addIcons({ notifications, sparkles });
   }
 
+  toggleNotification() {
+    this.notifActive = !this.notifActive;
+  }
+
+  goToProfile() {
+  console.log('Navegando al perfil del usuario...');
+  }
 }
