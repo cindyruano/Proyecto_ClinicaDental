@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>tab8</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">tab8</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <div class="header-container">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="9" class="brand-section">
+          <ion-avatar class="user-avatar" (click)="viewProfile()">
+            <img src="assets/imagen/usuario.webp" alt="Perfil">
+          </ion-avatar>
+          <h1 class="business-title">DentalClinic</h1>
+        </ion-col>
+        <ion-col size="3" class="ion-text-end">
+          <ion-button fill="clear" (click)="toggleNotification()" [color]="notifActive ? 'primary' : 'inverted'">
+            <ion-icon slot="icon-only" name="notifications"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>

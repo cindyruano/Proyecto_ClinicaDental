@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
+import { Router } from '@angular/router';
 import { notifications, sparkles } from 'ionicons/icons';
 
 @Component({
@@ -16,8 +17,12 @@ import { notifications, sparkles } from 'ionicons/icons';
 export class Tab4Page {
   notifActive: boolean = false;
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({ notifications, sparkles });
+  }
+
+  viewProfile() {
+    this.router.navigate(['/tabs/tab6']);
   }
 
   toggleNotification() {

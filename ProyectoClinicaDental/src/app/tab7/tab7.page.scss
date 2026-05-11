@@ -1,41 +1,254 @@
-// CHAT CON IA
+// PERFIL USUARIO
 
-//FONDO GENERAL
+// FONDO GENERAL
 ion-content {
-  --background: var(--ion-color-secondary);
+  --background: #edeff3;
 }
 
+// CUADRO PRESENTACIÓN
 .header-container {
-  background-color: var(--ion-color-outlined);
-  margin: 12px;
-  border-radius: 20px;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: #fffcfc;
+  padding: 12px 18px;
+}
 
-  .user-section {
+.brand-section {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .user-avatar {
   width: 40px;
   height: 40px;
-  margin-right: 10px;
-  border: 0px solid var(--ion-color-primary);
+  cursor: pointer;
 }
 
-  .brand-section {
+.business-title {
+  margin: 0;
+  color: #003366;
+  font-size: 1.3rem;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+}
+
+ion-button[color="inverted"] {
+  --color: var(--ion-color-inverted);
+}
+
+
+// ESTILOS DEL MENÚ DESPLEGABLE (NEW CHAT / HISTORIAL)
+.popover-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: white;
+
+  .popover-item-btn {
+    background: transparent;
+    border: none;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2d3748;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+
+    ion-icon {
+      font-size: 1.2rem;
+      color: #5c6a79;
+    }
+
+    &:active {
+      background: #f7fafc;
+    }
+  }
+}
+
+// CONTENEDOR GENERAL DEL CHAT
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 110px); // Ajusta la altura restando la cabecera
+  justify-content: space-between;
+}
+
+// 1. ÁREA DE MENSAJES (SCROLLABLE)
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .message-row {
+    display: flex;
+    width: 100%;
+
+    .bubble {
+      max-width: 82%;
+      padding: 14px 16px;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+      p {
+        margin: 0 0 8px 0;
+        font-size: 0.96rem;
+        line-height: 1.4;
+      }
+      p:last-of-type { margin-bottom: 0; }
+
+      ul {
+        margin: 8px 0;
+        padding-left: 20px;
+        font-size: 0.96rem;
+        li { margin-bottom: 6px; }
+      }
+
+      .message-time {
+        display: block;
+        text-align: right;
+        font-size: 0.72rem;
+        margin-top: 6px;
+        font-weight: 600;
+      }
+    }
+
+    // Estilo IA (Blanco)
+    &.ia-message {
+      justify-content: flex-start;
+      .bubble {
+        background: #ffffff;
+        color: #2c3748;
+        border-radius: 4px 18px 18px 18px;
+
+        .meta-prompt {
+          background: #f1f5f9;
+          border-radius: 10px;
+          padding: 10px;
+          margin-top: 10px;
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #4a5568;
+        }
+        .message-time { color: #a0aec0; }
+      }
+    }
+
+    // Estilo Usuario (Azul)
+    &.user-message {
+      justify-content: flex-end;
+      .bubble {
+        background: #0066cc; // Azul corporativo idéntico a tu captura
+        color: #ffffff;
+        border-radius: 18px 4px 18px 18px;
+
+        .message-time { color: rgba(255, 255, 255, 0.7); }
+      }
+    }
+  }
+}
+
+// 2. SUGERENCIAS HORIZONTALES (CÁPSULAS)
+.suggestions-container {
+  padding: 8px 0;
+
+  .suggestions-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 0 16px;
+    scrollbar-width: none; // Oculta barra en Firefox
+    &::-webkit-scrollbar { display: none; } // Oculta barra en Chrome/Safari
+
+    .suggestion-btn {
+      background: #dbeafe;
+      color: #1e40af;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:active {
+        background: #bfdbfe;
+      }
+    }
+  }
+}
+
+// 3. BARRA INFERIOR DE ESCRITURA
+.chat-input-bar {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 8px 10px;
+  border-top: 1px solid #e2e8f0;
+
+  .emoji-btn {
+    --color: #718096;
+    margin: 0;
+    font-size: 1.4rem;
   }
 
-  .clinic-name {
-    font-size: 1.1rem;
-    font-weight: 550;
-    color: #2b6de5;
-    margin: 0.5px;
-    text-transform: uppercase;
-    letter-spacing: 0px;
+  .input-wrapper {
+    flex: 1;
+    margin: 0 8px;
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: #f7fafc;
+      padding: 11px 16px;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      color: #2d3748;
+
+      &::placeholder {
+        color: #a0aec0;
+      }
+    }
   }
+
+  .send-btn {
+    --color: #0066cc; // Flecha azul de envío
+    margin: 0;
+    font-size: 1.6rem;
+
+    &[disabled] {
+      opacity: 0.4;
+    }
+  }
+}
+
+// CONTENEDOR GENERAL DEL CHAT
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 110px); // Ajusta la altura restando la cabecera
+  justify-content: space-between;
+
+  // CORREGIDO: Agrega este espacio abajo para empujar la barra de texto y que no la tape el menú inferior
+  padding-bottom: 75px;
+}
+
+// Opcional: Si notas que al bajar del todo el último mensaje se pega mucho a las sugerencias,
+// puedes darle un aire extra al contenedor de mensajes:
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 16px 20px 16px; // Un poco más de padding abajo internamente
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

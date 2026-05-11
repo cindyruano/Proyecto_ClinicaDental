@@ -14,7 +14,6 @@ export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
 
   constructor() {
-    // Registramos los 4 iconos sólidos con formato idéntico
     addIcons({ homeSharp, calendarSharp, locationSharp, trophySharp });
   }
 }

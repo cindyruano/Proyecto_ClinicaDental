@@ -1,20 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { Router } from '@angular/router';
+import { notifications, sparkles } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tab8',
-  templateUrl: './tab8.page.html',
-  styleUrls: ['./tab8.page.scss'],
+  selector: 'app-tab6',
+  templateUrl: 'tab6.page.html',
+  styleUrls: ['tab6.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [
+    CommonModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton
+  ],
 })
-export class Tab8Page implements OnInit {
+export class Tab6Page {
+  notifActive: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private router: Router) {
+    addIcons({ notifications, sparkles });
   }
 
+  viewProfile() {
+    this.router.navigate(['/tabs/tab6']);
+  }
+
+  toggleNotification() {
+    this.notifActive = !this.notifActive;
+  }
+
+  goToProfile() {
+  console.log('Navegando al perfil del usuario...');
+  }
 }

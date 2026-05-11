@@ -1,349 +1,237 @@
-// FONDO GENERAL
+// INICIO
 ion-content {
-  --background: var(--ion-color-secondary);
+  --background: #edeff3;
 }
 
 // CUADRO PRESENTACIÓN
 .header-container {
-  background-color: var(--ion-color-outlined);
-  margin: 12px;
-  border-radius: 20px;
-  padding: 6px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: #fffcfc;
+  padding: 12px 18px;
 }
 
-.user-section {
+.brand-section {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .user-avatar {
   width: 40px;
   height: 40px;
-  margin-right: 10px;
-  border: 0px solid var(--ion-color-primary);
-}
-
-.user-info {
-  .welcome-text {
-    margin: 0;
-    font-size: 0.75rem;
-    color: #888;
-    font-weight: 400;
-  }
-  .user-name {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--ion-color-inverted);
-  }
+  cursor: pointer;
 }
 
 .business-title {
-  color: var(--ion-color-primary);
+  margin: 0;
+  color: #003366;
   font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-  position: absolute;
-  left: 90%;
-  transform: translateX(-50%);
-  margin: -0.5rem;
+  font-weight: 550;
+  letter-spacing: -0.5px;
 }
 
-// CUADRO TU SALUD BUCAL
-.health-card {
-  background-color: var(--ion-color-outlined);
-  margin: 12px;
-  border-radius: 20px;
-  padding: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+ion-button[color="inverted"] {
+  --color: var(--ion-color-inverted);
 }
 
-.health-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--ion-color-inverted);
-  margin-top: 0px;
-  margin-bottom: 2px;
-}
+// ===============================================================
+// SALUDO
+.standalone-welcome {
+  padding: 20px 25px 15px 25px;
 
-.motivation-text {
-  margin: 0 0 8px 0;
-  font-size: 0.86rem;
-  color: #666;
-  display: block;
-}
-
-.badge-wrapper {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.percentage-badge {
-  background-color: #e2f3e4;
-  padding: 5px 35px 5px 13px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  max-width: fit-content;
-}
-
-.percentage-number {
-  color: #008945;
-  font-weight: 800;
-  font-size: 17px;
-}
-
-.percentage-label {
-  color: #008945;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.emoji-container {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 0px;
-}
-
-.status-emoji {
-  font-size: 4.5rem;
-  color: var(--ion-color-primary);
-}
-
-// CUADRO PRÓXIMA CITA
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: -0.4rem 15px -0.5rem 20px;
-
-  .section-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--ion-color-inverted);
+  .welcome-title {
     margin: 0;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #003366;
+    letter-spacing: -0.1px;
+  }
+
+  .welcome-subtitle {
+    margin: 6px 0 0 0;
+    font-size: 1rem;
+    color: #556b82;
+    font-weight: 400;
   }
 }
 
-.appointment-card {
-  background: linear-gradient(125deg, #0d47a1 0%, #1e88e5 100%);
-  margin: 0 12px;
-  border-radius: 20px;
-  padding: 12px;
-  color: white;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-
-  .appointment-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-
-    .date-label {
-      margin: 0.5rem;
-      font-size: 0.86rem;
-      letter-spacing: 1px;
-      opacity: 0.9;
-    }
-    .time-label {
-      margin: 0.5rem;
-      font-size: 1.7rem;
-      font-weight: 700;
-    }
-    .calendar-icon-bg {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 12px;
-      border-radius: 20px;
-      display: flex;
-      ion-icon { font-size: 2rem; }
-    }
-  }
-
-  .card-divider {
-    height: 0.1rem;
-    background: rgba(255, 255, 255, 0.15);
-    margin: 10px 0;
-  }
-
-  .appointment-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .doctor-profile {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      .doc-avatar {
-        width: 50px;
-        height: 50px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-      }
-      .doc-data {
-        h3 { margin: 0; font-size: 1rem; font-weight: 700; }
-        p { margin: 0; font-size: 0.80rem; opacity: 0.8; }
-      }
-    }
-    .details-btn {
-      --background: white;
-      --color: #0d47a1;
-      --border-radius: 10px;
-      --box-shadow: none;
-      font-weight: 700;
-      font-size: 0.85rem;
-      height: 38px;
-    }
-  }
-}
-
-// CUADRO DESCUENTOS Y PROMOCIONES
-.promo-container {
-  margin: 18px -0.5rem;
-
-  .promo-card-btn {
-    --padding-start: 0;
-    --padding-end: 0;
-    width: 100%;
-    height: auto;
-    text-transform: none;
-  }
-}
-
-.promo-wrapper {
+// ===============================================================
+// CONTENEDOR PRÓXIMA REVISIÓN
+.appointment-card-new {
+  margin: 8px 20px;
+  background: #fffcfc;
+  border-radius: 25px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between;
-  gap: 5px;
+  padding: 10px 22px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 
-  .arrow-btn {
-    --color: var(--ion-color-primary);
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13%;
+    height: 75%;
+    width: 5px;
+    background-color: #ffd700;
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.label-mini {
+  color: #b8860b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0cap;
+}
+
+.appointment-date {
+  color: #003366;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.appointment-info {
+  color: #556b82;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+// BOTÓN CALENDARIO
+.calendar-button {
+  --background: #001b3d;
+  --color: white;
+  --border-radius: 14px;
+  width: 52px;
+  height: 52px;
+  margin: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+
+  ion-icon {
     font-size: 1.5rem;
-    --padding-start: 0;
-    --padding-end: 0;
-    align-self: center;
   }
 }
 
-.promo-card {
-  background-color: var(--ion-color-outlined);
-  padding: 12px 16px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  text-align: left;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: background 0.3s ease;
-  border-radius: 25px !important;
-
-  &:hover {
-    background: rgba(var(--ion-color-primary-rgb), 0.05);
-    border-radius: 25px;
-  }
-}
-
-.promo-content {
-  flex: 1;
-  padding-right: 10px;
+// ===============================================================
+// CUADRO GAMIFICACIÓN
+.health-card-container {
+  margin: 20px 25px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 25px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-
-  .promo-badge {
-    background-color: #3b82f6;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 20px;
-    position: absolute;
-    top: 19px;
-    left: 17px;
-  }
-
-  .promo-title {
-    margin: 1px;
-    margin-top: 13px;
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: #1d1d1d;
-    line-height: 4;
-  }
-  .promo-description {
-    margin: -0.99rem -0.99rem -0.8rem 0;
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.1;
-  }
+  align-items: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
-.promo-image-wrapper {
-  margin-top: -2px;
+.status-icon-wrapper {
+  margin-bottom: 15px;
 
-  .promo-image-bg {
-    background-color: #d1e9ff;
-    padding: 10px;
-    border-radius: 20px;
-    width: 90px;
-    height: 90px;
+  .outer-circle {
+    width: 110px;
+    height: 110px;
+    background: #f4f7f9;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
+  }
+
+  .inner-circle {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .emoji-btn {
+    --color: #003366;
+    --padding-start: 0;
+    --padding-end: 0;
+    margin: 0;
+    font-size: 3rem;
   }
 }
 
-.promo-card-fixed {
-  background-color: var(--ion-color-outlined);
-  border-radius: 20px;
-  padding: 11px 16px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+// TÍTULO Y BADGE
+.health-title {
+  color: #003366;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.status-badge {
+  background: #ffe58f;
+  padding: 6px 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+
+  span {
+    color: #856404;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+}
+
+// SECCIÓN DE PROGRESO
+.progress-section {
   width: 100%;
-  height: 133px;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
-  position: relative;
-  cursor: pointer;
+  padding: 0 10px;
 
-  &:active {
-    transform: scale(0.98);
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    .progress-text {
+      font-size: 0.8rem;
+      color: #556b82;
+      font-weight: 600;
+    }
+
+    .progress-number {
+      font-size: 0.8rem;
+      color: #001b3d;
+      font-weight: 700;
+    }
   }
-}
 
-.promo-img-box {
-  background-color: #d1e9ff;
-  border-radius: 20px;
-  width: 85px;
-  height: 85px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin-top: 10px;
-
-  img {
+  .progress-bar-container {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 6px;
+    background: #eeeeee;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .progress-fill {
+      height: 100%;
+      background: #ffd700;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
   }
 }
 
+// ===============================================================
 // ATENCIÓN RÁPIDA (ACCIONES)
 .quick-actions-container {
-  margin: 15px 20px 10px 20px;
+  margin: 15px 25px 10px 25px;
 
   .quick-actions-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: var(--ion-color-inverted);
-    margin-bottom: 8px;
+    color: #003366;
+    margin-bottom: 15px;
   }
 }
 
@@ -375,77 +263,138 @@ ion-content {
 }
 
 .bg-blue {
-  background-color: #eef4fa;
-  ion-icon { color: #1e88e5; }
+  background-color: #fffcfc;
+  ion-icon { color: #003366; }
 }
 
 .bg-green {
-  background-color: #edf7f0;
-  ion-icon { color: #2e7d32; }
+  background-color: #fffcfc;
+  ion-icon { color: #003366; }
 }
 
 .bg-gray {
-  background-color: #f5f5f5;
-  ion-icon { color: #616161; }
+  background-color: #fffcfc;
+  ion-icon { color: #003366; }
 }
 
 .action-label {
   margin-top: 8px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #333;
+  color: #556b82;
   line-height: 1.2;
   max-width: 80px;
   text-align: center;
 }
 
-// ELEMENTOS COMUNES, BOTONES Y AJUSTES
-.history-btn {
-  --color: var(--ion-color-primary);
-  font-weight: 600;
-  text-transform: none;
-  font-size: 0.9rem;
+// ===============================================================
+// CUADRO DESCUENTOS Y PROMOCIONES
+.promo-container {
+  margin: 25px 15px;
 }
 
-.emoji-button, .calendar-btn, .avatar-button {
-  --padding-start: 0;
-  --padding-end: 0;
-  --background-hover: transparent;
-  height: auto;
-  margin: 0;
-}
-
-.emoji-button:active {
-  transform: scale(0.9);
-  transition: 0.2s;
-}
-
-.calendar-img-container {
-  background: white;
-  padding: 8px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+.promo-wrapper {
   display: flex;
-  .calendar-img-main { width: 40px; height: 40px; opacity: 1 !important; }
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px;
+
+  .arrow-btn {
+    --color: #001b3d;
+    font-size: 1.4rem;
+    --padding-start: 0;
+    --padding-end: 0;
+    width: 25px;
+  }
 }
 
-// INDICADORES DE CARRUSEL (DOTS)
+.promo-card-fixed {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 25px;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 125px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.promo-content {
+  flex: 1;
+  text-align: left;
+  padding-right: 10px;
+
+  .promo-badge {
+    background-color: #556b82;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    display: inline-block;
+  }
+
+  .promo-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #003366;
+  }
+
+  .promo-description {
+    margin: 4px 0 0 0;
+    font-size: 0.8rem;
+    color: #556b82;
+  }
+}
+
+.promo-img-box {
+  background-color: #f4f7f9;
+  border-radius: 18px;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  img {
+    width: 70%;
+    object-fit: contain;
+  }
+}
+
+// DOTS
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 10px;
-
+  gap: 6px;
+  margin-top: 15px;
   .dot {
-    width: 20px;
-    height: 5px;
+    width: 12px;
+    height: 4px;
     background: #dcdcdc;
     border-radius: 10px;
-    transition: 0.4s;
-
     &.active {
-      background: var(--ion-color-primary);
-      width: 35px;
+      background: #001b3d;
+      width: 25px;
     }
   }
+}
+
+// ===============================================================
+// Separación de navegación
+.promo-container {
+  margin: 25px 20px 80px 20px;
 }

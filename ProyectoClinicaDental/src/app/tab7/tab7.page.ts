@@ -1,30 +1,69 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton } from '@ionic/angular/standalone';
+import { FormsModule } from '@angular/forms'; // <-- IMPORTANTE: Para usar [(ngModel)]
+import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton, IonPopover } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { notifications, sparkles } from 'ionicons/icons';
+import { Router } from '@angular/router';
+import {
+  notifications,
+  sparkles,
+  ellipsisVertical,
+  chatboxEllipsesOutline,
+  timeOutline,
+  happyOutline,
+  arrowForwardCircle
+} from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tab4',
-  templateUrl: 'tab4.page.html',
-  styleUrls: ['tab4.page.scss'],
+  selector: 'app-tab7',
+  templateUrl: 'tab7.page.html',
+  styleUrls: ['tab7.page.scss'],
   standalone: true,
   imports: [
-    CommonModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton
+    CommonModule, FormsModule, IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton, IonPopover
   ],
 })
-export class Tab4Page {
+export class Tab7Page {
   notifActive: boolean = false;
+  chatMessage: string = ''; // Almacena el texto dinámico del input
 
-  constructor() {
-    addIcons({ notifications, sparkles });
+  constructor(private router: Router) {
+    addIcons({
+      notifications,
+      sparkles,
+      ellipsisVertical,
+      chatboxEllipsesOutline,
+      timeOutline,
+      happyOutline,
+      arrowForwardCircle
+    });
+  }
+
+  viewProfile() {
+    this.router.navigate(['/tabs/tab6']);
   }
 
   toggleNotification() {
     this.notifActive = !this.notifActive;
   }
 
-  goToProfile() {
-  console.log('Navegando al perfil del usuario...');
+
+  sendMessage() {
+    if (this.chatMessage.trim()) {
+      console.log('Mensaje enviado a la IA:', this.chatMessage);
+      this.chatMessage = ''; // Limpia el campo tras enviar
+    }
   }
+
+  selectSuggestion(question: string) {
+    this.chatMessage = question; // Pega la sugerencia en el input para el usuario
+  }
+
+  openEmojiPicker() {
+    console.log('Abriendo selector de emojis...');
+  }
+
+  createNewChat() { console.log('Iniciando una nueva conversación...'); }
+  openHistory() { console.log('Abriendo el historial...'); }
+  goToProfile() { console.log('Navegando al perfil...'); }
 }

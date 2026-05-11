@@ -1,43 +1,41 @@
+// AGENDAR CITA
+
 // FONDO GENERAL
 ion-content {
-  --background: var(--ion-color-secondary);
+  --background: #edeff3;
 }
 
 // CUADRO PRESENTACIÓN
 .header-container {
-  background-color: var(--ion-color-outlined);
-  margin: 12px;
-  border-radius: 20px;
-  padding: 6px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-
-  .user-section {
-    display: flex;
-    align-items: center;
-  }
-
-  .user-avatar {
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
-    border: 0px solid var(--ion-color-primary);
-  }
-
-  .brand-section {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-  }
-
-  .clinic-name {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: #2b6de5;
-    margin: 0.5px;
-    letter-spacing: 0px;
-  }
+  background-color: #fffcfc;
+  padding: 12px 18px;
 }
 
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.business-title {
+  margin: 0;
+  color: #003366;
+  font-size: 1.3rem;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+}
+
+ion-button[color="inverted"] {
+  --color: var(--ion-color-inverted);
+}
+
+//========================================
 // ELEMENTOS COMUNES Y COMPONENTES BASE
 .avatar-button, .emoji-button, .calendar-btn {
   --padding-start: 0;
@@ -57,131 +55,101 @@ ion-content {
   clip: rect(0, 0, 0, 0);
 }
 
-// AGENDAR CITAS
-.main-title-container {
-  padding: 10px 25px 0px 25px;
-
-  .section-main-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #121212;
-    margin: 0;
-  }
-
-  .section-subtitle {
-    color: #666;
-    font-size: 0.86rem;
-    margin: 8px 0;
-  }
-}
-
-// CUADROS TRATAMIENTOS
+// =====================================================
+// SERVICIOS
 .treatment-section {
-  padding: 0px 17px;
-  margin-top: 8px;
+  padding: 0 15px;
+  margin-top: 10px;
 
   .section-header-inline {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 8px;
-    margin-bottom: -10px;
-  }
+    margin-bottom: 2px;
+    padding: 0 5px;
 
-  .section-title-small {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #444;
-    letter-spacing: 0.3px;
-    margin: 0;
-  }
+    .section-title-small {
+      font-weight: 800;
+      font-size: 15px;
+      color: #003366;
+      letter-spacing: 1.5px;
+      margin: 0;
+      text-transform: uppercase;
+    }
 
-  .view-more-btn {
-    --color: var(--ion-color-primary);
-    font-weight: 700;
-    font-size: 0.9rem;
-    --padding-end: 0;
-    text-transform: none;
-    height: auto;
-    margin: 0;
+    .view-more-btn {
+      --color: #556b82;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: none;
+      height: auto;
+    }
   }
-}
-
-.treatment-buttons-container {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
 }
 
 .treatment-box {
-  flex: 1;
   background: white;
-  border-radius: 18px;
-  margin: 8px;
-  margin-top: 7px;
-  padding: 19px 15px;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  border-radius: 25px;
+  margin: 6px;
+  margin-top: 0px;
+  padding: 15px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2.3px solid #f4f7f9;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
+  min-height: 100px;
 
   .icon-wrapper {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-
-    &.blue-light { background: #eef4ff; }
-    &.grey-light { background: #f4f4f4; }
-
-    .inner-icon { width: 60px; }
-    .inner-icon-ion { font-size: 24px; color: #555; }
+    margin-bottom: 10px;
+    ion-icon {
+      font-size: 2rem;
+      color: #001b3d;
+    }
   }
 
   h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: #111;
-  }
-
-  p {
-    margin: 4px 0 0 0;
-    font-size: 0.85rem;
-    color: #888;
+    color: #556b82;
+    text-align: center;
   }
 
   &.selected {
-    border-color: #2b6de5;
+    border-color: #001b3d;
     background: #ffffff;
-    box-shadow: 0 4px 15px rgba(43, 109, 229, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 27, 61, 0.05);
+
+    h3 { color: #001b3d; }
   }
 
   &:active {
-    transform: scale(0.96);
+    transform: scale(0.95);
   }
 }
 
+// ====================================================
 // CONTENEDOR DEL CALENDARIO
 .calendar-container {
-  padding: 0px 17px;
+  padding: 15px 17px;
   margin-top: 2px;
 
   .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 8px;
+    padding: 0 12px;
     margin-bottom: 0px;
 
     .month-year-picker-btn {
       background: transparent;
       border: none;
-      font-size: 1.1rem;
+      font-size: 15px;
       font-weight: 700;
-      color: #3e4b5b;
+      color: #003366;
       letter-spacing: 0.5px;
       cursor: pointer;
       padding: 0;
@@ -210,8 +178,8 @@ ion-content {
 // TARJETA BLANCA DEL CALENDARIO
 .calendar-card {
   background: white;
-  border-radius: 20px;
-  padding: 18px 15px;
+  border-radius: 25px;
+  padding: 20px 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 
   // Letras
@@ -222,7 +190,7 @@ ion-content {
     margin-bottom: 10px;
 
     .week-day {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #8e9aa7;
     }
@@ -241,7 +209,7 @@ ion-content {
     border: none;
     font-size: 0.95rem;
     font-weight: 700;
-    color: #1c2430;
+    color: #556b82;
     height: 38px;
     width: 38px;
     margin: 0 auto;
@@ -271,16 +239,17 @@ ion-content {
   }
 }
 
-// SECCIÓN HORARIOS DISPONIBLES Y CONFIRMACIÓN
+// =====================================================
+// HORARIOS DISPONIBLES
 .slots-section {
   padding: 0px 17px;
   margin-top: 25px;
   margin-bottom: 15px;
 
   .section-title-slots {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    color: #5c6a79;
+    color: #003366;
     letter-spacing: 0.5px;
     margin-bottom: 15px;
     padding: 0 8px;
@@ -300,7 +269,7 @@ ion-content {
   // Estilo base de los botones de horario (Cápsulas)
   .slot-btn {
     background: white;
-    color: #1c2430;
+    color: #556b82;
     font-weight: 700;
     font-size: 0.95rem;
     padding: 10px 0;
@@ -351,43 +320,99 @@ ion-content {
   }
 }
 
-// BOTONES DE ACCIÓN (INFERIORES)
-.actions-container {
-  margin-top: 25px;
+// ========================================
+// AJUSTE GLOBAL DE SCROLL (Evita el fondo blanco al deslizar)
+// ========================================
+ion-content {
+  --background: #edeff3;
+  /* Añade un colchón de espacio al final del contenedor interno de scroll */
+  --padding-bottom: 90px;
+}
+
+// ========================================
+// CONTENEDOR DE BOTONES (Sin fondos ni bloques rígidos)
+// ========================================
+.custom-actions-wrapper {
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 0 16px;
+  background: transparent !important;
+  box-sizing: border-box;
+}
 
-  // 3. Botón Agregar a Calendarios
-  .calendar-sync-btn {
-    --color: #0c63bc;
-    font-weight: 700;
-    font-size: 0.92rem;
-    text-transform: none;
-    background: #edf4fc;
-    border-radius: 14px;
-    height: 48px;
-    margin: 0;
+// ========================================
+// BOTÓN SECUNDARIO: AGREGAR A CALENDARIO
+// ========================================
+.calendar-sync-btn {
+  --background: #e2ebf5;
+  --color: #002244;
+  --border-radius: 26px;
+  --box-shadow: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  height: 52px;
+  width: 85%;
+  max-width: 320px;
+  margin: 0 auto !important;
+  text-transform: none;
+  letter-spacing: 0.3px;
 
-    ion-icon {
-      font-size: 1.3rem;
-    }
+  /* Eliminar cualquier sombra o background heredado en el elemento base */
+  background: transparent !important;
+  box-shadow: none !important;
+
+  ion-icon {
+    font-size: 1.35rem;
+    margin-right: 8px;
+    color: #002244;
   }
 
-  // 4. Botón Confirmar Cita Verde
-  .confirm-appointment-btn {
-    --background: #006b38;
-    --color: white;
-    --border-radius: 16px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    height: 54px;
-    margin: 0;
-    text-transform: none;
-    box-shadow: 0 4px 12px rgba(0, 107, 56, 0.2);
-
-    ion-icon {
-      font-size: 1.4rem;
-    }
+  &:active {
+    transform: scale(0.97);
+    opacity: 0.9;
   }
+}
+
+.confirm-appointment-btn {
+  --background: #001b3d;     /* Color normal (Azul marino) */
+  --background-activated: #000c1c; /* Color al PRESIONAR en móvil (Azul casi negro) */
+  --background-hover: #001229;     /* Color al pasar el mouse en web */
+
+  --color: #ffffff;
+  --border-radius: 26px;
+  --box-shadow: 0 8px 20px rgba(0, 27, 61, 0.25);
+  font-weight: 700;
+  font-size: 1.05rem;
+  height: 54px;
+  width: 85%;
+  max-width: 320px;
+  margin: 0 auto !important;
+  text-transform: none;
+  letter-spacing: 0.3px;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: background-color 0.15s ease-in-out;
+
+  ion-icon {
+    font-size: 1.35rem;
+    margin-right: 8px;
+    color: #ffffff;
+  }
+}
+
+// Separación de navegación
+.actions-container {
+  margin-top: 30px;
+  margin-bottom: 25px;     /* Añadido un margen inferior extra */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 15px;
+  background: transparent;
 }

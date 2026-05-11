@@ -1,19 +1,16 @@
-<ion-content [fullscreen]="true" [style.--background]="'var(--ion-color-secondary)'">
-
+<ion-content [fullscreen]="true">
   <div class="header-container">
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-align-items-center">
         <ion-col size="9" class="brand-section">
-          <ion-button fill="clear" class="avatar-button" (click)="goToProfile()">
-            <ion-avatar class="user-avatar">
-              <img src="assets/imagen/usuario.webp" alt="Perfil">
-            </ion-avatar>
-          </ion-button>
-          <h1 class="clinic-name">CLINICA DENTAL</h1>
+          <ion-avatar class="user-avatar" (click)="viewProfile()">
+            <img src="assets/imagen/usuario.webp" alt="Perfil">
+          </ion-avatar>
+          <h1 class="business-title">DentalClinic</h1>
         </ion-col>
         <ion-col size="3" class="ion-text-end">
-          <ion-button fill="clear" (click)="toggleNotification()">
-            <ion-icon slot="icon-only" name="notifications" color="primary"></ion-icon>
+          <ion-button fill="clear" (click)="toggleNotification()" [color]="notifActive ? 'primary' : 'inverted'">
+            <ion-icon slot="icon-only" name="notifications"></ion-icon>
           </ion-button>
         </ion-col>
       </ion-row>

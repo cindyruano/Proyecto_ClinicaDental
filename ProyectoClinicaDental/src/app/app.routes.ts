@@ -26,6 +26,14 @@ export const routes: Routes = [
         path: 'tab5', // Historial de Citas
         loadComponent: () => import('./tab5/tab5.page').then(m => m.Tab5Page)
       },
+       {
+        path: 'tab6', // Historial de Citas
+        loadComponent: () => import('./tab6/tab6.page').then(m => m.Tab6Page)
+      },
+       {
+        path: 'tab7', // Chat con IA
+        loadComponent: () => import('./tab7/tab7.page').then(m => m.Tab7Page)
+      },
       {
         path: '',
         redirectTo: '/tabs/tab1',

@@ -1,23 +1,14 @@
-<ion-content [fullscreen]="true" [style.--background]="'var(--ion-color-secondary)'">
-
+<ion-content [fullscreen]="true">
   <div class="header-container">
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-align-items-center">
-        <ion-col size="4" class="user-section">
-          <ion-button fill="clear" (click)="viewProfile()" class="avatar-button">
-            <ion-avatar class="user-avatar">
-              <img src="assets/imagen/usuario.webp" alt="Perfil">
-            </ion-avatar>
-          </ion-button>
-          <div class="user-info">
-            <p class="welcome-text">Bienvenido</p>
-            <h2 class="user-name">{{ userName }}</h2>
-          </div>
+        <ion-col size="9" class="brand-section">
+          <ion-avatar class="user-avatar" (click)="viewProfile()">
+            <img src="assets/imagen/usuario.webp" alt="Perfil">
+          </ion-avatar>
+          <h1 class="business-title">DentalClinic</h1>
         </ion-col>
-        <ion-col size="4" class="ion-text-center">
-          <h1 class="business-title">Clinic Dental</h1>
-        </ion-col>
-        <ion-col size="4" class="ion-text-end">
+        <ion-col size="3" class="ion-text-end">
           <ion-button fill="clear" (click)="toggleNotification()" [color]="notifActive ? 'primary' : 'inverted'">
             <ion-icon slot="icon-only" name="notifications"></ion-icon>
           </ion-button>
@@ -26,57 +17,52 @@
     </ion-grid>
   </div>
 
-  <div class="health-card">
-    <ion-row class="ion-align-items-center">
-      <ion-col size="8">
-        <h3 class="health-title">Tu Salud Bucal</h3>
-        <p class="motivation-text">¡Vas por excelente camino!</p>
-        <div class="badge-wrapper">
-          <div class="percentage-badge">
-            <span class="percentage-number">{{ saludPorcentaje }}%</span>
-            <span class="percentage-label">Salud Dental</span>
-          </div>
-        </div>
-      </ion-col>
-      <ion-col size="4" class="ion-text-right">
-        <ion-button fill="clear" (click)="openHealthDetails()" class="emoji-button">
-          <ion-icon name="happy" class="status-emoji"></ion-icon>
+  <div class="standalone-welcome">
+    <h1 class="welcome-title">Hola, {{ userName }}</h1>
+    <p class="welcome-subtitle">Tu salud dental es nuestra prioridad hoy.</p>
+  </div>
+
+  <div class="appointment-card-new">
+    <div class="card-content">
+      <p class="label-mini">PRÓXIMA REVISIÓN</p>
+      <h2 class="appointment-date">Lunes, 12 de Oct</h2>
+      <p class="appointment-info">10:00 AM — {{ proximaCita.doctor }}</p>
+    </div>
+
+    <ion-button fill="clear" class="calendar-button" (click)="goToHistorialCitas()">
+      <ion-icon slot="icon-only" name="calendar-clear"></ion-icon>
+    </ion-button>
+  </div>
+
+
+  <div class="health-card-container">
+  <div class="status-icon-wrapper">
+    <div class="outer-circle">
+      <div class="inner-circle">
+        <ion-button fill="clear" class="emoji-btn" (click)="openHealthDetails()">
+          <ion-icon name="happy"></ion-icon>
         </ion-button>
-      </ion-col>
-    </ion-row>
-  </div>
-
-  <div class="section-header">
-    <h2 class="section-title">Próxima Cita</h2>
-    <ion-button fill="clear" (click)="viewHistory()" class="history-btn">Ver historial</ion-button>
-  </div>
-
-  <div class="appointment-card">
-    <div class="appointment-top">
-      <div class="date-content">
-        <p class="date-label">{{ proximaCita.fecha }}</p>
-        <h2 class="time-label">{{ proximaCita.hora }}</h2>
       </div>
-      <ion-button fill="clear" (click)="goToHistorialCitas()" class="calendar-btn">
-        <div class="calendar-img-container">
-          <img src="assets/imagen/calendario.webp" class="calendar-img-main" alt="Calendario">
-        </div>
-      </ion-button>
-    </div>
-    <div class="card-divider"></div>
-    <div class="appointment-bottom">
-      <div class="doctor-profile">
-        <ion-avatar class="doc-avatar">
-          <img src="assets/imagen/doctor.webp" alt="Doctor">
-        </ion-avatar>
-        <div class="doc-data">
-          <h3>{{ proximaCita.doctor }}</h3>
-          <p>{{ proximaCita.especialidad }}</p>
-        </div>
-      </div>
-      <ion-button class="details-btn" (click)="viewAppointmentDetails()">Detalles</ion-button>
     </div>
   </div>
+
+  <h2 class="health-title">Salud Dental</h2>
+
+  <div class="status-badge">
+    <span>En Proceso</span>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-labels">
+      <span class="progress-text">Progreso de Tratamiento</span>
+      <span class="progress-number">{{ saludPorcentaje }}%</span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-fill" [style.width.%]="saludPorcentaje"></div>
+    </div>
+  </div>
+</div>
+
 
   <div class="quick-actions-container">
     <h2 class="quick-actions-title">Atención Rápida</h2>
@@ -85,11 +71,10 @@
         <ion-col size="4" class="ion-text-center action-col">
           <ion-button fill="clear" class="circle-btn" (click)="agendarCita()">
             <div class="icon-circle bg-blue">
-              <ion-icon name="add"></ion-icon>
-            </div>
-          </ion-button>
-          <span class="action-label">Agendar Cita</span>
-        </ion-col>
+              <ion-icon name="add-outline"></ion-icon> </div>
+            </ion-button>
+            <span class="action-label">Agendar Cita</span>
+          </ion-col>
         <ion-col size="4" class="ion-text-center action-col">
           <ion-button fill="clear" class="circle-btn" (click)="chatIA()">
             <div class="icon-circle bg-green">
@@ -110,28 +95,30 @@
     </ion-grid>
   </div>
 
-  <div class="promo-container">
-    <div class="promo-wrapper">
-      <ion-button fill="clear" class="arrow-btn" (click)="prevPromo()">
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </ion-button>
-      <div class="promo-card-fixed" (click)="verDetallePromo()">
-        <div class="promo-content">
-          <span class="promo-badge">OFERTA DEL MES</span>
-          <h2 class="promo-title">{{ promociones[indiceActual].title }}</h2>
-          <p class="promo-description">{{ promociones[indiceActual].desc }}</p>
-        </div>
-        <div class="promo-img-box">
-          <img src="assets/imagen/descuento.webp" alt="Promo">
-        </div>
+
+<div class="promo-container">
+  <div class="promo-wrapper">
+    <ion-button fill="clear" class="arrow-btn" (click)="prevPromo()">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+    <div class="promo-card-fixed ion-activatable ripple-parent" (click)="verDetallePromo()">
+      <ion-ripple-effect></ion-ripple-effect>
+      <div class="promo-content">
+        <span class="promo-badge">OFERTA DEL MES</span>
+        <h2 class="promo-title">{{ promociones[indiceActual].title }}</h2>
+        <p class="promo-description">{{ promociones[indiceActual].desc }}</p>
       </div>
-      <ion-button fill="clear" class="arrow-btn" (click)="nextPromo()">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </ion-button>
+      <div class="promo-img-box">
+        <img src="assets/imagen/descuento.webp" alt="Promo">
+      </div>
     </div>
-    <div class="carousel-dots">
-      <div *ngFor="let p of promociones; let i = index" class="dot" [class.active]="i === indiceActual"></div>
-    </div>
+    <ion-button fill="clear" class="arrow-btn" (click)="nextPromo()">
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-button>
   </div>
+  <div class="carousel-dots">
+    <div *ngFor="let p of promociones; let i = index" class="dot" [class.active]="i === indiceActual"></div>
+  </div>
+</div>
 
 </ion-content>

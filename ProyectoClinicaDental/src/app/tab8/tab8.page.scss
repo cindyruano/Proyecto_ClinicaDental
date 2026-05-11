@@ -1,1 +1,36 @@
 // GAMIFICACIÓN
+
+// FONDO GENERAL
+ion-content {
+  --background: #edeff3;
+}
+
+// CUADRO PRESENTACIÓN
+.header-container {
+  background-color: #fffcfc;
+  padding: 12px 18px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.business-title {
+  margin: 0;
+  color: #003366;
+  font-size: 1.3rem;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+}
+
+ion-button[color="inverted"] {
+  --color: var(--ion-color-inverted);
+}

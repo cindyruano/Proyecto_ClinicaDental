@@ -1,22 +1,101 @@
-<ion-content [fullscreen]="true" [style.--background]="'var(--ion-color-secondary)'">
-
+<ion-content [fullscreen]="true">
   <div class="header-container">
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-align-items-center">
         <ion-col size="9" class="brand-section">
-          <ion-button fill="clear" class="avatar-button" (click)="goToProfile()">
-            <ion-avatar class="user-avatar">
-              <img src="assets/imagen/usuario.webp" alt="Perfil">
-            </ion-avatar>
-          </ion-button>
-          <h1 class="clinic-name">CLINICA DENTAL</h1>
+          <ion-avatar class="user-avatar" (click)="viewProfile()">
+            <img src="assets/imagen/usuario.webp" alt="Perfil">
+          </ion-avatar>
+          <h1 class="business-title">DentalClinic</h1>
         </ion-col>
         <ion-col size="3" class="ion-text-end">
-          <ion-button fill="clear" (click)="toggleNotification()">
-            <ion-icon slot="icon-only" name="notifications" color="primary"></ion-icon>
+          <ion-button fill="clear" (click)="toggleNotification()" [color]="notifActive ? 'primary' : 'inverted'">
+            <ion-icon slot="icon-only" name="notifications"></ion-icon>
           </ion-button>
+
+          <ion-popover trigger="click-trigger" triggerAction="click" dismissOnSelect="true">
+            <ng-template>
+              <div class="popover-menu-content">
+                <button class="popover-item-btn" (click)="createNewChat()">
+                  <ion-icon name="chatbox-plus-outline"></ion-icon>
+                  Historial
+                </button>
+                <button class="popover-item-btn" (click)="createNewChat()">
+                  <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                  Nuevo chat
+                </button>
+              </div>
+            </ng-template>
+          </ion-popover>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
+
+
+
+
+  <div class="chat-container">
+
+  <div class="chat-messages">
+
+    <div class="message-row ia-message">
+      <div class="bubble">
+        <p>Lamento escuchar eso. El dolor persistente puede deberse a varias causas, como una caries profunda o sensibilidad.</p>
+        <p>Te recomiendo lo siguiente:</p>
+        <ul>
+          <li>Evita bebidas muy frías o calientes.</li>
+          <li>Usa hilo dental suavemente en esa zona.</li>
+          <li>Agenda una revisión lo antes posible.</li>
+        </ul>
+        <div class="meta-prompt">
+          ¿Deseas que revise la disponibilidad del Dr. García para hoy?
+        </div>
+        <span class="message-time">09:16 AM</span>
+      </div>
+    </div>
+
+    <div class="message-row user-message">
+      <div class="bubble">
+        <p>Sí, por favor. ¿Qué horarios tienen disponibles?</p>
+        <span class="message-time">09:17 AM</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="suggestions-container">
+    <div class="suggestions-scroll">
+      <button class="suggestion-btn" (click)="selectSuggestion('¿Dolor de muelas?')">
+        ¿Dolor de muelas?
+      </button>
+      <button class="suggestion-btn" (click)="selectSuggestion('Cuidado de brackets')">
+        Cuidado de brackets
+      </button>
+      <button class="suggestion-btn" (click)="selectSuggestion('Limpieza general')">
+        Limpieza general
+      </button>
+    </div>
+  </div>
+
+  <div class="chat-input-bar">
+    <ion-button fill="clear" class="emoji-btn" (click)="openEmojiPicker()">
+      <ion-icon slot="icon-only" name="happy-outline"></ion-icon>
+    </ion-button>
+
+    <div class="input-wrapper">
+      <input
+        type="text"
+        placeholder="Escribe un mensaje..."
+        [(ngModel)]="chatMessage"
+        (keyup.enter)="sendMessage()">
+    </div>
+
+    <ion-button fill="clear" class="send-btn" [disabled]="!chatMessage.trim()" (click)="sendMessage()">
+      <ion-icon slot="icon-only" name="arrow-forward-circle"></ion-icon>
+    </ion-button>
+  </div>
+
+</div>
+
 </ion-content>

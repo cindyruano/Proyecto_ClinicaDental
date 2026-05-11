@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton, IonDatetime } from '@ionic/angular/standalone';
+import { IonContent, IonGrid, IonRow, IonCol, IonAvatar, IonIcon, IonButton, IonDatetime, IonRippleEffect } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { notifications, sparkles, medkit, chevronBackOutline, chevronForwardOutline, calendarNumberOutline, calendarClearOutline, checkmarkCircleOutline } from 'ionicons/icons';
+import { notifications, sparkles, medkit, chevronBackOutline, chevronForwardOutline, calendarNumberOutline, calendarClearOutline, checkmarkCircleOutline, colorWandOutline, bandageOutline, pulseOutline, sparklesOutline, medkitOutline } from 'ionicons/icons';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tab2',
@@ -29,19 +30,40 @@ export class Tab2Page {
   selectedYear: number = 2024;
 
   // Lógica de Horarios Disponibles
-  selectedSlot: string = '10:00'; // Inicializado en 10:00 como tu imagen
+  selectedSlot: string = '10:00';
   availableSlots: Array<{ time: string; disabled: boolean }> = [
     { time: '09:00', disabled: false },
     { time: '10:00', disabled: false },
     { time: '11:30', disabled: false },
-    { time: '12:00', disabled: true },  // Deshabilitado/Ocupado (Gris en la imagen)
+    { time: '12:00', disabled: true },
     { time: '15:00', disabled: false },
     { time: '16:30', disabled: false }
   ];
 
-  constructor() {
-    addIcons({ notifications, sparkles, medkit, chevronBackOutline, chevronForwardOutline, calendarNumberOutline, calendarClearOutline, checkmarkCircleOutline });
+  constructor(private router: Router) {
+    addIcons({
+      notifications,
+      sparklesOutline,
+      medkitOutline,
+      chevronBackOutline,
+      chevronForwardOutline,
+      calendarNumberOutline,
+      calendarClearOutline,
+      colorWandOutline,
+      bandageOutline,
+      pulseOutline,
+      checkmarkCircleOutline
+    });
     this.generateCalendar();
+  }
+
+
+  viewProfile() {
+    this.router.navigate(['/tabs/tab6']);
+  }
+
+  toggleNotification() {
+    this.notifActive = !this.notifActive;
   }
 
   selectSlot(time: string) {
@@ -77,7 +99,6 @@ export class Tab2Page {
   onMonthYearChange(event: any) { const selectedDateValue = new Date(event.detail.value); this.currentDate = selectedDateValue; this.generateCalendar(); }
   selectDate(day: number) { this.selectedDay = day; this.selectedMonth = this.currentDate.getMonth(); this.selectedYear = this.currentDate.getFullYear(); }
   isSelected(day: number): boolean { return this.selectedDay === day && this.selectedMonth === this.currentDate.getMonth() && this.selectedYear === this.currentDate.getFullYear(); }
-  toggleNotification() { this.notifActive = !this.notifActive; }
   seleccionar(tipo: string) { this.tratamientoSeleccionado = tipo; }
   goToProfile() { console.log('Navegando al perfil...'); }
   viewMoreTreatments() { console.log('Mostrando tratamientos...'); }

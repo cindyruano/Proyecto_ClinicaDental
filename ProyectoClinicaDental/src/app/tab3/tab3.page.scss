@@ -1,41 +1,218 @@
 // UBICACIÓN
 
-//FONDO GENERAL
+// FONDO GENERAL
 ion-content {
-  --background: var(--ion-color-secondary);
+  --background: #edeff3;
 }
 
-.header-container {
-  background-color: var(--ion-color-outlined);
-  margin: 12px;
-  border-radius: 20px;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-
-  .user-section {
-  display: flex;
-  align-items: center;
+// Quitar barras de scroll del contenedor nativo de Ionic
+ion-content.map-page {
+  --background: #edeff3;
+  --overflow: hidden;
 }
 
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  border: 0px solid var(--ion-color-primary);
+// CAPA 1: MAPA OCUPANDO EL 100% DE LA PANTALLA
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
-  .brand-section {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+// CAPA 2: CABECERA FLOTANTE
+.floating-header {
+  position: absolute;
+  top: 40px; // Ajusta según el notch o barra de estado del celular
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+  background: rgba(255, 252, 252, 0.9); // Tono #fffcfc con transparencia
+  backdrop-filter: blur(10px); // Efecto esmerilado/traslúcido
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.08);
+
+  .back-btn {
+    --color: #003366; // Tu azul corporativo
+    margin: 0;
   }
 
-  .clinic-name {
-    font-size: 1.1rem;
-    font-weight: 550;
-    color: #2b6de5;
-    margin: 0.5px;
-    text-transform: uppercase;
-    letter-spacing: 0px;
+  .page-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #003366; // Tu azul corporativo
+  }
+
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+    border: 2px solid #fff;
+  }
+}
+
+// CAPA 3: BOTONES DE CONTROL DE MAPA
+.map-controls {
+  position: absolute;
+  top: 130px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .control-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 27, 61, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #556b82; // Tu azul de acompañamiento
+    font-size: 1.3rem;
+    cursor: pointer;
+
+    &:active {
+      background: #f4f7f9;
+      color: #001b3d;
+    }
+  }
+}
+
+// CAPA 4: CONTENEDOR Y TARJETA INFORMATIVA INFERIOR
+.info-card-container {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+.info-card {
+  background: rgba(255, 252, 252, 0.95); // Usando tu color #fffcfc
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 25px; // Mismo radio que tus "treatment-box" y "calendar-card"
+  padding: 20px;
+  border: 2px solid #f4f7f9;
+  box-shadow: 0 10px 30px rgba(0, 27, 61, 0.1);
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+
+    .subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      color: #556b82; // Tu azul de acompañamiento
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .clinic-name {
+      margin: 4px 0 0 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #003366; // Tu azul corporativo
+    }
+
+    .verified-badge {
+      color: #003366;
+      font-size: 1.6rem;
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #556b82;
+
+      ion-icon {
+        font-size: 1.2rem;
+        color: #001b3d; // Iconos resaltados en azul marino
+        flex-shrink: 0;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  // BOTÓN "CÓMO LLEGAR" AZUL MARINO
+  .directions-btn {
+    width: 100%;
+    background: #001b3d; // Tu color de botón confirmar ("confirm-appointment-btn")
+    color: #ffffff;
+    border: none;
+    border-radius: 26px; // Mismo border radius que tus botones principales
+    padding: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(0, 27, 61, 0.25);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:active {
+      background: #000c1c;
+      transform: scale(0.97);
+    }
+
+    ion-icon {
+      font-size: 1.35rem;
+      color: #ffffff;
+    }
+  }
+}
+
+
+// MODIFICA ESTA CLASE EN TU ARCHIVO SCSS
+.info-card-container {
+  position: absolute;
+  bottom: 80px; /* SUBIDO de 16px a 80px (o hasta 90px según el alto de tus tabs) */
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+.info-card-container {
+  position: absolute;
+  bottom: 80px;
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+
+  // Transición suave de 0.4 segundos con aceleración/desaceleración natural
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+  transform: translateY(0);
+  opacity: 1;
+
+  // Clase que se activa cuando el usuario mueve el mapa
+  &.hidden-card {
+    transform: translateY(350px); // Empuja la tarjeta hacia abajo, fuera del viewport
+    opacity: 0; // Desvanecimiento opcional para un mejor efecto visual
+    pointer-events: none; // Evita que se pueda hacer clic en el botón invisible
   }
 }
