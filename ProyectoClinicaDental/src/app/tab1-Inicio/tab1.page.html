@@ -1,0 +1,124 @@
+<ion-content [fullscreen]="true">
+  <div class="header-container">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="9" class="brand-section">
+          <ion-avatar class="user-avatar" (click)="viewProfile()">
+            <img src="assets/imagen/usuario.webp" alt="Perfil">
+          </ion-avatar>
+          <h1 class="business-title">DentalClinic</h1>
+        </ion-col>
+        <ion-col size="3" class="ion-text-end">
+          <ion-button fill="clear" (click)="toggleNotification()" [color]="notifActive ? 'primary' : 'inverted'">
+            <ion-icon slot="icon-only" name="notifications"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="standalone-welcome">
+    <h1 class="welcome-title">Hola, {{ userName }}</h1>
+    <p class="welcome-subtitle">Tu salud dental es nuestra prioridad hoy.</p>
+  </div>
+
+  <div class="appointment-card-new" (click)="goToHistorialCitas()">
+    <div class="calendar-icon-box">
+      <ion-icon name="calendar-clear"></ion-icon>
+    </div>
+    <div class="appointment-text-content">
+      <h2 class="appointment-main-title">Próxima Cita</h2>
+      <p class="appointment-details-info">
+        14 Oct <span>•</span> {{ proximaCita.hora }} <span>•</span> {{ proximaCita.doctor }}
+      </p>
+    </div>
+    <div class="appointment-arrow-action">
+      <ion-icon name="chevron-forward"></ion-icon>
+    </div>
+  </div>
+
+  <div class="health-container-clean">
+    <div class="health-left-col">
+      <div class="status-icon-wrapper">
+        <div class="outer-circle">
+          <div class="inner-circle">
+            <ion-button fill="clear" class="emoji-btn" (click)="openHealthDetails()">
+              <ion-icon name="happy"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="health-right-col">
+      <h2 class="health-title">Salud Dental</h2>
+      <div class="progress-section">
+        <div class="progress-labels">
+          <span class="progress-text">Progreso de Tratamiento</span>
+          <span class="progress-number">{{ saludPorcentaje }}%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-fill" [style.width.%]="saludPorcentaje"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-actions-container">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="4" class="ion-text-center action-col">
+          <ion-button fill="clear" class="circle-btn" (click)="agendarCita()">
+            <div class="icon-circle bg-blue">
+              <ion-icon name="add-outline"></ion-icon>
+            </div>
+          </ion-button>
+          <span class="action-label">Agendar Cita</span>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center action-col">
+          <ion-button fill="clear" class="circle-btn" (click)="chatIA()">
+            <div class="icon-circle bg-green">
+              <ion-icon name="chatbubble-ellipses"></ion-icon>
+            </div>
+          </ion-button>
+          <span class="action-label">Chat con IA</span>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center action-col">
+          <ion-button fill="clear" class="circle-btn" (click)="soporteTecnico()">
+            <div class="icon-circle bg-gray">
+              <ion-icon name="headset"></ion-icon>
+            </div>
+          </ion-button>
+          <span class="action-label">Soporte</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="promo-section-v2">
+    <h2 class="section-title">Novedades</h2>
+    <div class="promo-scroll-container">
+      <div class="promo-card-v2" *ngFor="let promo of promociones" (click)="verDetallePromo(promo)">
+        <img [src]="promo.img" [alt]="promo.title" class="promo-bg-img">
+        <div class="promo-gradient-overlay"></div>
+        <div class="promo-content-v2">
+          <span class="promo-badge-v2">PROMO EXCLUSIVA</span>
+          <h2 class="promo-title-v2">{{ promo.title }}</h2>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-container">
+    <div class="tip-card">
+      <div class="tip-icon-cell">
+        <div class="icon-circle-light">
+          <ion-icon name="bulb-outline" color="primary"></ion-icon>
+        </div>
+      </div>
+      <div class="tip-content-cell">
+        <p><strong>Tip de la semana:</strong> {{ tipDeLaSemana }}</p>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,535 @@
+/* ==========================================
+   ESTRUCTURA PRINCIPAL Y CABECERA
+   ========================================== */
+
+/* Contenedor General de la App */
+ion-content {
+  --background: #edeff3;
+}
+
+/* Cuadro de Presentación Superior */
+.header-container {
+  background-color: #fffcfc;
+  padding: 12px 18px;
+}
+
+/* Bloque de Marca y Logo */
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Imagen de Avatar del Usuario */
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Título del Negocio / Empresa */
+.business-title {
+  margin: 0;
+  color: #003366;
+  font-size: 1.3rem;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+}
+
+/* Botón Invertido de la Cabecera */
+ion-button[color="inverted"] {
+  --color: var(--ion-color-inverted);
+}
+
+
+/* ==========================================
+   SECCIÓN DE BIENVENIDA Y SALUDO
+   ========================================== */
+
+/* Cuadro de Mensaje de Bienvenida */
+.standalone-welcome {
+  padding: 20px 25px 15px 25px;
+
+  /* Texto de Título Principal */
+  .welcome-title {
+    margin: 0;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #003366;
+    letter-spacing: -0.1px;
+  }
+
+  /* Texto de Subtítulo Secundario */
+  .welcome-subtitle {
+    margin: 6px 0 0 0;
+    font-size: 1rem;
+    color: #556b82;
+    font-weight: 400;
+  }
+}
+
+
+/* ==========================================
+   SECCIÓN DE PRÓXIMA REVISIÓN / CITAS
+   ========================================== */
+
+/* Tarjeta de la Cita Médica */
+.appointment-card-new {
+  margin: 8px 25px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  overflow: hidden;
+
+  /* Línea Lateral Decorativa */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: #ffd700;
+  }
+}
+
+
+/* Cuadro del Icono de Calendario */
+.calendar-icon-box {
+  width: 50px;
+  height: 50px;
+  background-color: #f1f4f8;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  margin-right: 15px;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 1.4rem;
+    color: #003366;
+  }
+}
+
+/* Contenedor de Textos de la Cita */
+.appointment-text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Nombre o Tipo de Cita */
+  .appointment-main-title {
+    margin: 0 0 4px 0;
+    color: #003366;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  /* Detalles de Fecha y Hora */
+  .appointment-details-info {
+    margin: 0;
+    color: #6b7c93;
+    font-size: 0.9rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+
+    /* Separador de Texto */
+    span {
+      margin: 0 6px;
+      color: #a0aec0;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+/* Cuadro de la Flecha de Acción */
+.appointment-arrow-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+
+  ion-icon {
+    font-size: 1.2rem;
+    color: #b8c4d4;
+  }
+}
+
+
+/* ==========================================
+   SECCIÓN DE GAMIFICACIÓN Y ESTADO DE SALUD
+   ========================================== */
+
+.health-container-clean {
+  margin: 25px 25px 0px 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 51, 102, 0.08);
+  padding-bottom: 20px;
+}
+
+/* Columna Izquierda (Icono/Emoji) */
+.health-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+/* Columna Derecha (Textos y Barra) */
+.health-right-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Contenedor del Círculo del Emoji */
+.status-icon-wrapper {
+  margin-bottom: 0;
+
+  /* Círculo Exterior */
+  .outer-circle {
+    width: 60.5px;
+    height: 60.5px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Círculo Interior */
+  .inner-circle {
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Botón del Emoji */
+  .emoji-btn {
+    --color: #003366;
+    --padding-start: 0;
+    --padding-end: 0;
+    margin: 0;
+    font-size: 2rem;
+  }
+}
+
+/* Título del Estado de Salud */
+.health-title {
+  color: #003366;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-align: left;
+}
+
+/* Cuadro de la Barra de Progreso */
+.progress-section {
+  width: 100%;
+
+  /* Etiquetas de Texto del Progreso */
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+
+    /* Texto Indicador (ej. "Progreso") */
+    .progress-text {
+      font-size: 0.8rem;
+      color: #556b82;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    /* Número del Porcentaje (ej. "80%") */
+    .progress-number {
+      font-size: 0.8rem;
+      color: #001b3d;
+      font-weight: 700;
+      margin-left: 5px;
+    }
+  }
+
+  /* Contenedor Fondo de la Barra */
+  .progress-bar-container {
+    width: 100%;
+    height: 7px;
+    background: #e2e6eb;
+    border-radius: 10px;
+    overflow: hidden;
+
+    /* Relleno Activo de la Barra */
+    .progress-fill {
+      height: 100%;
+      background: #ffd700;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+  }
+}
+
+
+/* ==========================================
+   SECCIÓN DE ACCIONES RÁPIDAS
+   ========================================== */
+
+.quick-actions-container {
+  margin: 20px 25px 0px 25px;
+
+  .quick-actions-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 15px;
+  }
+}
+
+/* Columna de Alineación del Botón */
+.action-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Botón Circular Base */
+.circle-btn {
+  --padding-start: 0;
+  --padding-end: 0;
+  height: auto;
+  margin: -0.7rem;
+}
+
+/* Diseño del Círculo para Iconos */
+.icon-circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+
+  ion-icon { font-size: 1.8rem; }
+  &:active { transform: scale(0.92); }
+}
+
+/* Botón Variante Azul */
+.bg-blue {
+  background-color: #fffcfc;
+  ion-icon { color: #003366; }
+}
+
+/* Botón Variante Verde */
+.bg-green {
+  background-color: #fffcfc;
+  ion-icon { color: #003366; }
+}
+
+/* Botón Variante Gris */
+.bg-gray {
+  background-color: #fffcfc;
+  ion-icon { color: #003366; }
+}
+
+/* Texto Inferior del Botón */
+.action-label {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #556b82;
+  line-height: 1.2;
+  max-width: 80px;
+  text-align: center;
+}
+
+
+/* ==========================================
+   SECCIÓN DE PROMOCIONES
+   ========================================== */
+
+.promo-section-v2 {
+  margin: 25px 0 10px 0;
+  padding-left: 20px;
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 15px;
+  }
+}
+
+/* Contenedor con Scroll Horizontal */
+.promo-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 15px;
+  padding-left: 2px;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Tarjeta de Promoción Individual */
+.promo-card-v2 {
+  flex: 0 0 85%;
+  margin-right: 15px;
+  height: 160px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgb(163, 159, 159);
+  scroll-snap-align: start;
+  background-color: #304e78;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  outline: 0px solid transparent;
+
+  -webkit-tap-highlight-color: transparent;
+
+  /* Imagen de Fondo de la Promo */
+  .promo-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Capa Degradada Superpuesta */
+  .promo-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(170deg, rgba(255, 255, 255, 0.15) 20%, rgba(73, 97, 131, 0.6) 100%);
+    z-index: 2;
+  }
+
+  /* Cuadro de Contenido del Texto */
+  .promo-content-v2 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 3;
+    color: white;
+
+    /* Etiqueta / Badge Superior */
+    .promo-badge-v2 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      display: block;
+      color: #ffffff;
+      opacity: 0.9;
+    }
+
+    /* Texto del Título de la Promo */
+    .promo-title-v2 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+
+/* ==========================================
+   SECCIÓN DE RECOMENDACIONES
+   ========================================== */
+
+/* Tarjeta de Diseño del Consejo */
+.tip-card {
+  background-color: #f1f6fb;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+
+  /* Celda del Icono Izquierdo */
+  .tip-icon-cell {
+    margin-right: 15px;
+    flex-shrink: 0;
+
+    /* Círculo de Fondo del Icono */
+    .icon-circle-light {
+      width: 45px;
+      height: 45px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+      ion-icon {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  /* Celda de Texto del Mensaje */
+  .tip-content-cell {
+    flex: 1;
+
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #556b82;
+      line-height: 1.4;
+      strong {
+        color: #003366;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+/* Espacio Inferior */
+.tip-container {
+  margin: 5px 10px 80px 20px;
+}
