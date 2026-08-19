@@ -1,0 +1,38 @@
+@startuml
+skinparam shadowing false
+skinparam defaultFontName Arial
+autonumber
+
+actor "Responsable de QA" as QA
+participant "Pipeline CI/CD" as CI
+participant "Runner E2E" as E2E
+participant "Repositorio de evidencia" as REP
+participant "Quality Gate" as QG
+
+QA -> CI : Solicitar ejecución de versión
+CI -> CI : Validar parámetros
+alt Parámetros inválidos
+  CI --> QA : Rechazar solicitud con detalle
+else Parámetros válidos
+  CI -> E2E : Preparar y ejecutar suite E2E
+  E2E -> E2E : Validar ambiente
+  alt Ambiente no disponible
+    E2E --> CI : Error de preparación
+    CI --> QA : Notificar ejecución no iniciada
+  else Ambiente disponible
+    E2E -> E2E : Ejecutar casos E2E
+    E2E --> CI : Resultados de ejecución
+    CI -> REP : Guardar logs, capturas y reporte
+    REP --> CI : Confirmar evidencia almacenada
+    CI -> QG : Enviar resultados y métricas
+    QG -> QG : Evaluar criterios de calidad
+    alt Quality gate aprobado
+      QG --> CI : APROBADO
+      CI --> QA : Versión apta para continuar
+    else Quality gate rechazado
+      QG --> CI : BLOQUEADO
+      CI --> QA : Versión bloqueada + causas
+    end
+  end
+end
+@enduml

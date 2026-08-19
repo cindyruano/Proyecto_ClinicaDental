@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+start
+:Definir versión candidata;
+:Seleccionar suite E2E;
+:Configurar variables y entorno;
+if (¿Parámetros válidos?) then (Sí)
+  :Solicitar ejecución al pipeline;
+  :Preparar ambiente de pruebas;
+  if (¿Ambiente disponible?) then (Sí)
+    :Ejecutar pruebas E2E;
+    :Recolectar resultados;
+    if (¿Pruebas completadas?) then (Sí)
+      :Guardar logs, capturas y reporte;
+      if (¿Evidencia completa?) then (Sí)
+        :Calcular criterios del quality gate;
+        if (¿Quality gate aprobado?) then (Sí)
+          :Marcar versión como apta;
+          :Emitir resultado de calidad;
+        else (No)
+          :Marcar versión como bloqueada;
+          :Registrar causas del rechazo;
+        endif
+      else (No)
+        :Registrar evidencia incompleta;
+        :Solicitar corrección y nueva ejecución;
+      endif
+    else (No)
+      :Registrar ejecución fallida;
+      :Conservar diagnóstico disponible;
+    endif
+  else (No)
+    :Registrar ambiente no disponible;
+    :Notificar incidente de ejecución;
+  endif
+else (No)
+  :Mostrar parámetros inválidos;
+  :Solicitar corrección de la planificación;
+endif
+stop
+@enduml

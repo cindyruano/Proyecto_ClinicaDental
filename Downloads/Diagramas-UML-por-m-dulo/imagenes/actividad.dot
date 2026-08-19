@@ -1,0 +1,21 @@
+digraph G {
+rankdir=TB; node [shape=box,fontname="Arial"];
+s [shape=circle,label="Inicio"]; a [label="Definir versión candidata"]; b [label="Seleccionar suite E2E"];
+c [label="Configurar variables y entorno"]; d [shape=diamond,label="¿Parámetros válidos?"];
+e [label="Solicitar ejecución al pipeline"]; f [label="Preparar ambiente"]; g [shape=diamond,label="¿Ambiente disponible?"];
+h [label="Ejecutar pruebas E2E"]; i [label="Recolectar resultados"]; j [shape=diamond,label="¿Pruebas completadas?"];
+k [label="Guardar logs, capturas y reporte"]; l [shape=diamond,label="¿Evidencia completa?"];
+m [label="Calcular criterios del quality gate"]; n [shape=diamond,label="¿Quality gate aprobado?"];
+o [label="Marcar versión como apta"]; p [label="Emitir resultado de calidad"];
+q [label="Marcar versión como bloqueada"]; r [label="Registrar causas del rechazo"];
+x [label="Registrar evidencia incompleta"]; y [label="Solicitar corrección y nueva ejecución"];
+z [label="Registrar ejecución fallida"]; z2 [label="Conservar diagnóstico disponible"];
+aa [label="Registrar ambiente no disponible"]; ab [label="Notificar incidente de ejecución"];
+ac [label="Mostrar parámetros inválidos"]; ad [label="Solicitar corrección de la planificación"];
+t [shape=doublecircle,label="Fin"];
+s->a->b->c->d; d->e [label="Sí"]; d->ac [label="No"]; ac->ad->t;
+e->f->g; g->h [label="Sí"]; g->aa [label="No"]; aa->ab->t;
+h->i->j; j->k [label="Sí"]; j->z [label="No"]; z->z2->t;
+k->l; l->m [label="Sí"]; l->x [label="No"]; x->y->t;
+m->n; n->o [label="Sí"]; o->p->t; n->q [label="No"]; q->r->t;
+}

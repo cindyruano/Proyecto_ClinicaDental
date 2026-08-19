@@ -1,0 +1,56 @@
+@startuml
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam defaultFontName Arial
+
+title DESPUÉS — Con DIP aplicado (dependencia invertida)
+
+class PipelineCalidadOrchestrator {
+  -planificador : IPlanificadorPruebas
+  -runner : IRunnerE2E
+  -repositorioEvidencia : IRepositorioEvidencia
+  -gate : IQualityGate
+  +ejecutarPipeline(release) : DecisionGate
+}
+
+interface IPlanificadorPruebas {
+  +obtenerPlan(release) : PlanDePruebas
+}
+interface IRunnerE2E {
+  +verificarAmbiente() : boolean
+  +ejecutar(plan) : ResultadoCaso[]
+}
+interface IRepositorioEvidencia {
+  +guardar(release, resultados) : string
+}
+interface IQualityGate {
+  +evaluar(resultados) : DecisionGate
+}
+
+class PlanificadorExcel
+class PlanificadorJira
+class RunnerPlaywright
+class RunnerCypress
+class RepositorioEvidenciaLocal
+class RepositorioEvidenciaFirebase
+class QualityGateSonarQube
+
+PipelineCalidadOrchestrator ..> IPlanificadorPruebas : depende de (inyectado)
+PipelineCalidadOrchestrator ..> IRunnerE2E : depende de (inyectado)
+PipelineCalidadOrchestrator ..> IRepositorioEvidencia : depende de (inyectado)
+PipelineCalidadOrchestrator ..> IQualityGate : depende de (inyectado)
+
+PlanificadorExcel ..|> IPlanificadorPruebas
+PlanificadorJira ..|> IPlanificadorPruebas
+RunnerPlaywright ..|> IRunnerE2E
+RunnerCypress ..|> IRunnerE2E
+RepositorioEvidenciaLocal ..|> IRepositorioEvidencia
+RepositorioEvidenciaFirebase ..|> IRepositorioEvidencia
+QualityGateSonarQube ..|> IQualityGate
+
+note right of PipelineCalidadOrchestrator
+  Alto nivel depende SOLO de
+  abstracciones. Los adaptadores
+  son intercambiables (DIP).
+end note
+@enduml

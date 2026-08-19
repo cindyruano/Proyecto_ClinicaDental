@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam defaultFontName Arial
+
+actor "Responsable de QA" as QA
+actor "Pipeline CI/CD" as CI
+
+rectangle "Gestión de ejecuciones automatizadas y calidad de versiones" {
+  usecase "CU-01\nPlanificar ejecución E2E" as UC1
+  usecase "CU-02\nEjecutar pruebas E2E" as UC2
+  usecase "CU-03\nConservar evidencia" as UC3
+  usecase "CU-04\nAplicar quality gate" as UC4
+
+  usecase "Validar parámetros\nde ejecución" as V1
+  usecase "Verificar ambiente\nde pruebas" as V2
+  usecase "Registrar resultados\ny evidencias" as V3
+  usecase "Evaluar criterios\nde calidad" as V4
+
+  UC1 .> V1 : <<include>>
+  UC2 .> V2 : <<include>>
+  UC2 .> V3 : <<include>>
+  UC4 .> V4 : <<include>>
+  UC2 .> UC3 : <<include>>
+  UC3 .> UC4 : <<include>>
+}
+
+QA --> UC1
+QA --> UC4
+CI --> UC2
+@enduml

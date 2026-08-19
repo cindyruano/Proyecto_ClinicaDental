@@ -1,0 +1,67 @@
+@startuml topologia_red
+title Figura 6. Topología de red y servidores\nModulo QA / E2E / CI / Despliegue\nProceso: Gestión de ejecuciones automatizadas y calidad de versiones
+
+skinparam backgroundColor White
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam node {
+  BackgroundColor #ECEFF1
+  BorderColor #455A64
+  FontColor #1F2933
+}
+skinparam database {
+  BackgroundColor #FFF8E1
+  BorderColor #455A64
+}
+skinparam cloud {
+  BackgroundColor #ECEFF1
+  BorderColor #455A64
+}
+skinparam rectangle {
+  BackgroundColor<<dmz>> #EFEBE9
+  BackgroundColor<<gestion>> #E3F2FD
+  BackgroundColor<<cicd>> #E8F5E9
+  BackgroundColor<<calidad>> #FFF8E1
+  BackgroundColor<<staging>> #F3E5F5
+  BorderColor #455A64
+}
+
+cloud "Internet\n(GitHub remoto)" as Internet
+
+rectangle "DMZ - VLAN 5 (172.16.5.0/24)\nSalida controlada a Internet" <<dmz>> {
+  node "Firewall / Proxy saliente\n(solo HTTPS 443 a github.com)" as FW_EXT
+  node "Servidor Git espejo interno\nUbuntu Server 24.04" as GIT_MIRROR
+}
+
+rectangle "VLAN 10 - Gestión y QA (192.168.10.0/24)" <<gestion>> {
+  node "Estación Responsable de QA\nWindows 11 / Git client / VPN" as QA_PC
+}
+
+node "Firewall interno / Router\n(control de tráfico entre VLANs)" as FW_CORE #FFE0B2
+
+rectangle "VLAN 20 - CI/CD (192.168.20.0/24)" <<cicd>> {
+  node "Servidor Pipeline CI/CD\nPipelineCalidadOrchestrator\nUbuntu 24.04 + Docker\n4 vCPU / 8 GB RAM / 100 GB SSD" as ORQ
+  node "Servidor Runner E2E\nPlaywright / Cypress en contenedores\n8 vCPU / 16 GB RAM / 200 GB SSD" as RUNNER
+}
+
+rectangle "VLAN 30 - Evidencia y Calidad (192.168.30.0/24)" <<calidad>> {
+  database "Servidor Repositorio de evidencia\nMinIO (S3 compatible)\n4 vCPU / 8 GB RAM / 1 TB HDD RAID 1" as EVID
+  database "Servidor Quality Gate\nSonarQube + PostgreSQL\n4 vCPU / 8 GB RAM / 150 GB SSD" as GATE
+}
+
+rectangle "VLAN 40 - Ambiente de pruebas / staging\n(192.168.40.0/24) - aislada de producción" <<staging>> {
+  node "Servidor de ambiente bajo prueba\n4 vCPU / 8 GB RAM / 100 GB SSD" as STG
+}
+
+Internet --> FW_EXT : HTTPS 443
+FW_EXT --> GIT_MIRROR : sync
+GIT_MIRROR --> FW_CORE : git 443/22
+QA_PC --> FW_CORE : HTTPS 443 / VPN
+FW_CORE --> ORQ : webhook / API 443
+ORQ --> RUNNER : ejecutarSuite() 443
+RUNNER --> EVID : guardarEvidencia() 443
+ORQ --> GATE : evaluar() 443
+RUNNER --> STG : pruebas E2E 80/443
+EVID --> GATE : lectura resultados
+
+@enduml

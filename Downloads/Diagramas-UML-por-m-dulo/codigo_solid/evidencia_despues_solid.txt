@@ -1,0 +1,44 @@
+== DESPUÉS (orquestador probado y ejecutado con DIP aplicado, cubriendo las 5 decisiones) ==
+=== CASO 1: parámetros inválidos -> bloqueado sin invocar Runner E2E (V1) ===
+[Planificación] Parámetros incompletos detectados para TEST
+❌ Quality Gate BLOQUEADO — versión bloqueada, causas registradas — Parámetros inválidos: se solicita corrección de la planificación (V1).
+OK   - bloqueado por parámetros inválidos, sin tocar el Runner E2E
+
+=== CASO 2: ambiente no disponible -> bloqueado (V2) ===
+[Runner E2E] Ambiente de pruebas no disponible
+❌ Quality Gate BLOQUEADO — versión bloqueada, causas registradas — Ambiente no disponible: se registra el incidente de ejecución (V2).
+OK   - bloqueado por ambiente no disponible
+
+=== CASO 3: ejecución incompleta -> bloqueado (¿Pruebas completadas?) ===
+❌ Quality Gate BLOQUEADO — versión bloqueada, causas registradas — Ejecución incompleta: se conserva el diagnóstico disponible.
+OK   - bloqueado porque el número de resultados no coincide con el plan
+
+=== CASO 4: evidencia incompleta -> bloqueado (V3) ===
+[Repositorio de evidencia] No se pudo confirmar el almacenamiento de la evidencia
+❌ Quality Gate BLOQUEADO — versión bloqueada, causas registradas — Evidencia incompleta: se solicita corrección y nueva ejecución.
+OK   - bloqueado porque el repositorio de evidencia no confirmó el guardado
+
+=== CASO 5: quality gate rechazado -> versión bloqueada (V4) ===
+❌ Quality Gate BLOQUEADO — versión bloqueada, causas registradas — 100% requerido (test, V4)
+OK   - quality gate rechaza (versión bloqueada) cuando hay al menos un caso fallido
+OK   - aun así la evidencia quedó conservada antes del rechazo (CU-03)
+
+=== CASO 6: camino feliz completo -> versión apta (aislamiento total, sin disco/red/navegador) ===
+✅ Quality Gate APROBADO — versión apta para continuar (100.0%) — 100% requerido (test, V4)
+OK   - quality gate aprueba (versión apta) cuando el 100% de casos pasan
+
+=== CASO 7: mismo orquestador, ahora con adaptadores 'reales' (Jira+Cypress+Firebase) ===
+Ninguna línea de PipelineCalidadOrchestrator cambió para lograr esto.
+[Jira] Consultando ciclo de pruebas del release R-2026.08-ficticio
+[Runner E2E · Cypress] Ejecutando 2 casos E2E...
+[Repositorio de evidencia · Firebase] Evidencia sincronizada en firestore://evidencias/R-2026.08-ficticio (2 casos)
+❌ Quality Gate BLOQUEADO — versión bloqueada, causas registradas — umbral SonarQube 80% (V4)
+OK   - el orquestador funciona igual con adaptadores distintos
+
+=== CASO 8: mismo orquestador, combinación Excel+Playwright+Disco local+Sonar ===
+[Excel] Responsable de QA define versión, suite y parámetros desde ./planes/plan-actual.xlsx
+[Runner E2E · Playwright] Ejecutando 3 casos E2E...
+[Repositorio de evidencia · disco local] Evidencia guardada en ./evidencias/R-2026.08-ficticio.json (3 casos)
+✅ Quality Gate APROBADO — versión apta para continuar (100.0%) — umbral SonarQube 95% (V4)
+
+Todas las verificaciones pasaron.

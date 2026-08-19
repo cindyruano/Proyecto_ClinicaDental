@@ -1,0 +1,15 @@
+digraph G {
+rankdir=LR; node [shape=box,fontname="Arial"];
+qa [label="Responsable de QA"]; ci [label="Pipeline CI/CD"]; e2e [label="Runner E2E"]; rep [label="Repositorio de evidencia"]; qg [label="Quality Gate"];
+qa -> ci [label="Solicitar ejecución"];
+ci -> ci [label="Validar parámetros"];
+ci -> e2e [label="Preparar y ejecutar suite E2E"];
+e2e -> e2e [label="Validar ambiente / ejecutar pruebas"];
+e2e -> ci [label="Resultados"];
+ci -> rep [label="Guardar evidencia"];
+rep -> ci [label="Confirmar almacenamiento"];
+ci -> qg [label="Enviar métricas"];
+qg -> qg [label="Evaluar criterios"];
+qg -> ci [label="APROBADO / BLOQUEADO"];
+ci -> qa [label="Resultado de calidad"];
+}

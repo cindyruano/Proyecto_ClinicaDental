@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam defaultFontName Arial
+
+title ANTES — Sin aplicar DIP (acoplamiento fuerte)
+
+class PipelineCalidadOrchestrator {
+  +ejecutarPipeline(release) : boolean
+}
+
+class LectorPlanExcel
+class RunnerPlaywright
+class RepositorioEvidenciaDiscoLocal
+class QualityGateSonarQube
+
+PipelineCalidadOrchestrator --> LectorPlanExcel : new / usa directamente
+PipelineCalidadOrchestrator --> RunnerPlaywright : new / usa directamente
+PipelineCalidadOrchestrator --> RepositorioEvidenciaDiscoLocal : new / usa directamente
+PipelineCalidadOrchestrator --> QualityGateSonarQube : new / usa directamente
+
+note right of PipelineCalidadOrchestrator
+  Alto nivel acoplado a
+  implementaciones concretas
+  de bajo nivel. Viola DIP.
+end note
+@enduml

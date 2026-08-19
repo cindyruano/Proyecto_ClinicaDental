@@ -1,0 +1,6 @@
+== ANTES (acoplamiento fuerte a clases concretas) ==
+[Excel] Responsable de QA define versión, suite y parámetros desde ./planes/plan-actual.xlsx
+[Runner E2E · Playwright] Ejecutando 3 casos E2E...
+[Repositorio de evidencia · disco local] Evidencia guardada en C:/ci-runner/evidencias/R-2026.08-ficticio.json
+[Quality Gate · SonarQube] tasa de éxito=100.0%
+✅ Quality Gate APROBADO — versión apta para continuar

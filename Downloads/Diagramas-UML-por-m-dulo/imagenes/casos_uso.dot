@@ -1,0 +1,12 @@
+digraph G {
+rankdir=LR; node [shape=ellipse,fontname="Arial"];
+qa [shape=box,label="Responsable de QA"]; ci [shape=box,label="Pipeline CI/CD"];
+subgraph cluster_0 { label="Gestión de ejecuciones automatizadas y calidad de versiones";
+u1 [label="CU-01\nPlanificar ejecución E2E"]; u2 [label="CU-02\nEjecutar pruebas E2E"];
+u3 [label="CU-03\nConservar evidencia"]; u4 [label="CU-04\nAplicar quality gate"];
+v1 [label="Validar parámetros"]; v2 [label="Verificar ambiente"]; v3 [label="Registrar resultados"]; v4 [label="Evaluar criterios"];
+u1 -> v1 [style=dashed,label="include"]; u2 -> v2 [style=dashed,label="include"]; u2 -> v3 [style=dashed,label="include"];
+u4 -> v4 [style=dashed,label="include"]; u2 -> u3 [style=dashed,label="include"]; u3 -> u4 [style=dashed,label="include"];
+}
+qa -> u1; qa -> u4; ci -> u2;
+}
